@@ -43,6 +43,10 @@ Route::get('/cc', function() {
     Artisan::call('view:clear');
     return "Cleared!";
 });
+Route::get('/optimize', function() {
+    Artisan::call('optimize');
+    return "optimized!";
+});
 
 Route::get('/controller', function() {
     Artisan::call('make:controller Admin/TagManagerController');
