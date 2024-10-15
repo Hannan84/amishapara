@@ -57,12 +57,6 @@
               </div>
             </li>
 
-            <li class="dropdown d-none d-lg-inline-block">
-              <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
-                <i class="fe-maximize noti-icon"></i>
-              </a>
-            </li>
-
             <li class="dropdown notification-list topbar-dropdown">
               <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="fe-bell noti-icon"></i>
@@ -162,18 +156,7 @@
 
           <!-- LOGO -->
           <div class="logo-box">
-            <a href="{{url('admin/dashboard')}}" class="logo logo-dark text-center">
-              <span class="logo-sm">
-                <img src="{{asset($generalsetting->white_logo)}}" alt="" height="50" />
-                <!-- <span class="logo-lg-text-light">UBold</span> -->
-              </span>
-              <span class="logo-lg">
-                <img src="{{asset($generalsetting->dark_logo)}}" alt="" height="50" />
-                <!-- <span class="logo-lg-text-light">U</span> -->
-              </span>
-            </a>
-
-            <a href="{{url('admin/dashboard')}}" class="logo logo-light text-center">
+            <a href="{{url('/')}}" class="logo logo-light text-center">
               <span class="logo-sm">
                 <img src="{{asset($generalsetting->white_logo)}}" alt="" height="50" />
               </span>
@@ -304,9 +287,78 @@
     <!-- Footer Start -->
     <footer class="footer">
       <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12 text-end">&copy; {{$generalsetting->name}}</div>
+          <div class="row">
+            <div class="col-sm-4 mb-3 mb-sm-0">
+                <div class="footer-about">
+                    <a href="{{route('home')}}">
+                        <img src="{{asset($generalsetting->white_logo)}}" alt="" />
+                    </a>
+                    <p>{{$contact->address}}</p>
+                    <a href="tel:{{$contact->hotline}}" class="footer-hotlint">{{$contact->hotline}}</a>
+                </div>
+            </div>
+            <!-- col end -->
+            <div class="col-sm-3 mb-3 mb-sm-0 col-6">
+                <div class="footer-menu">
+                    <ul>
+                        <li class="title"><a>Useful Link</a></li>
+                        <li>
+                            <a href="{{route('contact')}}">Contact Us</a>
+                        </li>
+                        @foreach($pages as $page)
+                        <li><a href="{{route('page',['slug'=>$page->slug])}}">{{$page->name}}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+            <!-- col end -->
+            <div class="col-sm-2 mb-3 mb-sm-0 col-6">
+                <div class="footer-menu">
+                    <ul>
+                        <li class="title"><a>Link</a></li>
+                        @foreach($pagesright as $key=>$value)
+                        <li>
+                            <a href="{{route('page',['slug'=>$value->slug])}}">{{$value->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+
+            <!-- col end -->
+            <div class="col-sm-3 mb-3 mb-sm-0">
+                <div class="footer-menu">
+                    <ul>
+                        <li class="title stay_conn"><a>Stay Connected</a></li>
+                    </ul>
+                    <ul class="social_link">
+                        @foreach($socialicons as $value)
+                        <li class="social_list">
+                            <a class="mobile-social-link" href="{{$value->link}}"><i class="{{$value->icon}}"></i></a>
+                        </li>
+                        @endforeach
+                    </ul>
+                    <div class="d_app">
+                        <h2>Payment Option</h2>
+                            <img src="{{asset('public/frontEnd/images/cod.png')}}" alt="" />
+                            <!-- <img src="{{asset('public/frontEnd/images/bkash.png')}}" alt="" /> -->
+                            <!-- <img src="{{asset('public/frontEnd/images/nagad.png')}}" alt="" /> -->
+                    </div>
+                </div>
+            </div>
+            <!-- col end -->
         </div>
+      </div>
+      <div class="footer-bottom">
+          <div class="container-fluid">
+              <div class="row">
+                  <div class="col-sm-12">
+                      <div class="copyright">
+                          <p>Copyright © {{ date('Y') }} {{$generalsetting->name}}. All rights reserved.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
     </footer>
     <!-- end Footer -->

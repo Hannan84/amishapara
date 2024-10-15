@@ -108,6 +108,7 @@
     </div>
 </section>
 
+@if($hotdeal_top)
 <section class="homeproduct">
     <div class="container">
         <div class="row">
@@ -119,9 +120,9 @@
                                 <span class="section-title-name"> Hot Deal </span>
                             </div>
 
-                            <div class="">
+                            <!-- <div class="">
                                 <div class="offer_timer" id="simple_timer"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </h3>
                 </div>
@@ -131,7 +132,7 @@
                     @foreach ($hotdeal_top as $key => $value)
                         <div class="product_item wist_item">
                             <div class="product_item_inner">
-                                @if($value->old_price)
+                                @if($value->old_price != $value->new_price)
                                 <div class="sale-badge">
                                     <div class="sale-badge-inner">
                                         <div class="sale-badge-box">
@@ -156,7 +157,7 @@
                                     </div>
                                     <div class="pro_price">
                                         <p>
-                                            @if ($value->old_price)
+                                            @if ($value->old_price != $value->new_price)
                                              <del>৳ {{ $value->old_price }}</del>
                                             @endif
 
@@ -196,7 +197,7 @@
         </div>
     </div>
 </section>
-
+@endif
 @foreach ($homeproducts as $homecat)
     @if ($homecat->products->count() > 0)
     <section class="homeproduct">
@@ -215,7 +216,7 @@
                         @foreach ($homecat->products as $key => $value)
                            <div class="product_item wist_item">
                             <div class="product_item_inner">
-                                @if($value->old_price)
+                                @if($value->old_price != $value->new_price)
                                 <div class="sale-badge">
                                     <div class="sale-badge-inner">
                                         <div class="sale-badge-box">
@@ -240,7 +241,7 @@
                                     </div>
                                     <div class="pro_price">
                                         <p>
-                                            @if ($value->old_price)
+                                            @if ($value->old_price != $value->new_price)
                                              <del>৳ {{ $value->old_price }}</del>
                                             @endif
 
@@ -393,7 +394,7 @@
     });
 </script>
 
-<script>
+<!-- <script>
     $("#simple_timer").syotimer({
         date: new Date(2015, 0, 1),
         layout: "hms",
@@ -404,5 +405,5 @@
         periodic: true,
         periodInterval: 1,
     });
-</script>
+</script> -->
 @endpush

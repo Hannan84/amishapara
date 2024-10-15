@@ -1238,7 +1238,7 @@ section.slider-section {
     display: block;
 }
 .footer-bottom {
-    background: #fe5200;
+    background: #f7f7f7;
     padding: 10px 0;
 }
 
@@ -1252,7 +1252,7 @@ section.slider-section {
 
 .copyright p {
     text-align: center;
-    color: #fff;
+    color: #919191;
 }
 /*==== FOOTER CSS END ====  */
 
@@ -4002,7 +4002,7 @@ ul.child-category {
 }
 
 .cat_img {
-    height: 210px;
+    height: 96px;
     margin: 0 auto;
 }
 
@@ -4013,8 +4013,8 @@ ul.child-category {
 }
 
 .cat_item {
-    border: 1px solid #ddd;
-    padding: 10px;
+    /* border: 1px solid #ddd;
+    padding: 10px; */
     transition: 0.35s all;
     border-radius: 10px;
 }
@@ -4299,4 +4299,5 @@ td.tfoot_bg {
 .menu-arrow {
     left: 195px;
     right: 0px;
+    top: -29px;
 }

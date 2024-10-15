@@ -139,7 +139,9 @@
                     <!--sidebar item end-->
                 </form>
             </div>
-            <div class="col-sm-9">
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
                 <div class="category-product main_product_inner">
                     @foreach($products as $key=>$value)
                     <div class="product_item wist_item  wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0.{{$key}}s">

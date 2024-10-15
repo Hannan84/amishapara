@@ -41,9 +41,6 @@
                 <div class="col-sm-6">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="showing-data">
-                                <span>Showing {{ $products->firstItem() }}-{{ $products->lastItem() }} of {{ $products->total() }} Results</span>
-                            </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="filter_sort">
@@ -74,7 +71,6 @@
         
         <div class="row">
             <div class="col-sm-3 filter_sidebar">
-                
                 <div class="filter_close"><i class="fa fa-long-arrow-left"></i> Filter</div>
                 <form action="" class="attribute-submit">
                     <div class="sidebar_item wraper__item">
@@ -182,7 +178,9 @@
                     <!--sidebar item end-->
                 </form>
             </div>
-            <div class="col-sm-9">
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
                 <div class="category-product main_product_inner">
                     @foreach($products as $key=>$value)
                     <div class="product_item wist_item  wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0.{{$key}}s">
@@ -249,18 +247,6 @@
                 <div class="custom_paginate">
                     {{$products->links('pagination::bootstrap-4')}}
                    
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="homeproduct">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="meta_des">
-                    {!!$subcategory->meta_description!!}
                 </div>
             </div>
         </div>
