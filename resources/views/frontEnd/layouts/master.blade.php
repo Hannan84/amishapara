@@ -46,7 +46,7 @@
       <div class="navbar-custom">
         <div class="container-fluid">
           <ul class="list-unstyled topnav-menu float-end mb-0">
-            <li class="dropdown d-inline-block d-lg-none">
+            <!-- <li class="dropdown d-inline-block d-lg-none">
               <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="fe-search noti-icon"></i>
               </a>
@@ -55,7 +55,7 @@
                   <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username" />
                 </form>
               </div>
-            </li>
+            </li> -->
 
             <li class="dropdown notification-list topbar-dropdown">
               <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -123,11 +123,6 @@
                   <span>Change Password</span>
                 </a>
 
-                <!-- item-->
-                <a href="{{route('locked')}}" class="dropdown-item notify-item">
-                  <i class="fe-lock"></i>
-                  <span>Lock Screen</span>
-                </a>
 
                 <div class="dropdown-divider"></div>
 
@@ -153,7 +148,6 @@
             <!--    </a>-->
             <!--</li>-->
           </ul>
-
           <!-- LOGO -->
           <div class="logo-box">
             <a href="{{url('/')}}" class="logo logo-light text-center">
@@ -184,11 +178,17 @@
               </a>
               <!-- End mobile menu toggle-->
             </li>
-
-            <li class="dropdown d-none d-xl-block">
-              <a class="nav-link dropdown-toggle waves-effect waves-light" href="{{route('home')}}" target="_blank"> <i data-feather="globe"></i> Visit Site </a>
-            </li>
           </ul>
+
+          <div class="main-search">
+              <form action="{{route('search')}}">
+                  <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
+                  <button>
+                      <i data-feather="search"></i>
+                  </button>
+              </form>
+              <div class="search_result"></div>
+          </div>
           <div class="clearfix"></div>
         </div>
       </div>
