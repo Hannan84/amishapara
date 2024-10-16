@@ -33,8 +33,6 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="category-breadcrumb d-flex align-items-center">
-                        <a href="{{ route('home') }}">Home</a>
-                        <span>/</span>
                         <strong>{{ $subcategory->subcategoryName }}</strong>
                     </div>
                 </div>
@@ -73,7 +71,7 @@
             <div class="col-sm-3 filter_sidebar">
                 <div class="filter_close"><i class="fa fa-long-arrow-left"></i> Filter</div>
                 <form action="" class="attribute-submit">
-                    <div class="sidebar_item wraper__item">
+                    {{--<div class="sidebar_item wraper__item">
                         <div class="accordion" id="category_sidebar">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
@@ -97,7 +95,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                     <!--sidebar item end-->
                     <div class="sidebar_item wraper__item">
                         <div class="accordion" id="price_sidebar">
@@ -185,7 +183,7 @@
                     @foreach($products as $key=>$value)
                     <div class="product_item wist_item  wow fadeInDown" data-wow-duration="1.5s" data-wow-delay="0.{{$key}}s">
                         <div class="product_item_inner">
-                            @if($value->old_price)
+                            @if($value->old_price != $value->new_price)
                             <div class="sale-badge">
                                 <div class="sale-badge-inner">
                                     <div class="sale-badge-box">
@@ -209,8 +207,10 @@
                                 </div>
                                 <div class="pro_price">
                                     <p>
-                                        <del>৳ {{ $value->old_price}}</del>
-                                        ৳ {{ $value->new_price}} @if($value->old_price) @endif
+                                        @if ($value->old_price != $value->new_price)
+                                            <del>৳ {{ $value->old_price }}</del>
+                                        @endif
+                                        ৳ {{ $value->new_price }}
                                     </p>
                                 </div>
                             </div>
@@ -242,14 +242,14 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        {{--<div class="row">
             <div class="col-sm-12">
                 <div class="custom_paginate">
                     {{$products->links('pagination::bootstrap-4')}}
                    
                 </div>
             </div>
-        </div>
+        </div>--}}
     </div>
 </section>
 

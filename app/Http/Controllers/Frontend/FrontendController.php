@@ -22,6 +22,7 @@ use App\Models\OrderDetails;
 use App\Models\Payment;
 use App\Models\Order;
 use App\Models\Review;
+use App\Models\Brand;
 use Session;
 use Cart;
 use Auth;
@@ -34,6 +35,7 @@ class FrontendController extends Controller
         $frontcategory = Category::where(['status' => 1, 'featured' => 1])
             ->select('id', 'name', 'image', 'slug', 'status')
             ->get();
+        $brands = Brand::where('status',1)->take(12)->get();
 
         $sliders = Banner::where(['status' => 1, 'category_id' => 1])
             ->select('id', 'image', 'link')
@@ -72,7 +74,7 @@ class FrontendController extends Controller
                 return $query;
             });
         // return $homeproducts;
-        return view('frontEnd.layouts.pages.index', compact('sliders', 'frontcategory', 'hotdeal_top', 'hotdeal_bottom', 'homeproducts', 'sliderbottomads', 'footertopads'));
+        return view('frontEnd.layouts.pages.index', compact('sliders', 'frontcategory', 'brands', 'hotdeal_top', 'hotdeal_bottom', 'homeproducts', 'sliderbottomads', 'footertopads'));
     }
 
     public function hotdeals()
@@ -122,7 +124,7 @@ class FrontendController extends Controller
             });
         });
 
-        $products = $products->paginate(24);
+        $products = $products->get();
         return view('frontEnd.layouts.pages.category', compact('category', 'products', 'subcategories', 'min_price', 'max_price'));
     }
 
@@ -163,8 +165,13 @@ class FrontendController extends Controller
                 $subQuery->whereIn('id', $selectedChildcategories);
             });
         });
-
-        $products = $products->paginate(24);
+        $selectedChildcategories = $request->input('childcategory', []);
+        $products = $products->when($selectedChildcategories, function ($query) use ($selectedChildcategories) {
+            return $query->whereHas('childcategory', function ($subQuery) use ($selectedChildcategories) {
+                $subQuery->whereIn('id', $selectedChildcategories);
+            });
+        });
+        $products = $products->get();
         // return $products;
         $impproducts = Product::where(['status' => 1, 'topsale' => 1])
             ->with('image')
@@ -207,7 +214,7 @@ class FrontendController extends Controller
             $products = $products->where('new_price','<=',$request->max_price);
         }
 
-        $products = $products->paginate(24);
+        $products = $products->get();
         // return $products;
         $impproducts = Product::where(['status' => 1, 'topsale' => 1])
             ->with('image')
@@ -216,6 +223,47 @@ class FrontendController extends Controller
             ->get();
 
         return view('frontEnd.layouts.pages.childcategory', compact('childcategory', 'products', 'impproducts', 'min_price', 'max_price', 'childcategories'));
+    }
+    public function brands($slug, Request $request)
+    {
+        $brand = Brand::where(['slug' => $slug, 'status' => 1])->first();
+        $brands = Brand::where('status', 1)->get();
+        $products = Product::where(['status' => 1, 'brand_id' => $brand->id])->with('category')
+            ->select('id', 'name', 'slug', 'new_price', 'old_price', 'category_id','brand_id', 'subcategory_id', 'childcategory_id');
+
+
+        // return $request->sort;
+        if ($request->sort == 1) {
+            $products = $products->orderBy('created_at', 'desc');
+        } elseif ($request->sort == 2) {
+            $products = $products->orderBy('created_at', 'asc');
+        } elseif ($request->sort == 3) {
+            $products = $products->orderBy('new_price', 'desc');
+        } elseif ($request->sort == 4) {
+            $products = $products->orderBy('new_price', 'asc');
+        } elseif ($request->sort == 5) {
+            $products = $products->orderBy('name', 'asc');
+        } elseif ($request->sort == 6) {
+            $products = $products->orderBy('name', 'desc');
+        } else {
+            $products = $products->latest();
+        }
+        
+        $min_price = $products->min('new_price');
+        $max_price = $products->max('new_price');
+        if($request->min_price && $request->max_price){
+            $products = $products->where('new_price','>=',$request->min_price);
+            $products = $products->where('new_price','<=',$request->max_price);
+        }
+        $selectedbrands = $request->input('brand', []);
+        $products = $products->when($selectedbrands, function ($query) use ($selectedbrands) {
+            return $query->whereHas('brand', function ($subQuery) use ($selectedbrands) {
+                $subQuery->whereIn('id', $selectedbrands);
+            });
+        });
+        $products = $products->get();
+
+        return view('frontEnd.layouts.pages.brand', compact('brand', 'products', 'min_price', 'max_price', 'brands'));
     }
 
 

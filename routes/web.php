@@ -60,6 +60,7 @@ Route::group(['namespace'=>'Frontend', 'middleware' => ['ipcheck','check_refer']
     Route::get('subcategory/{subcategory}', [FrontendController::class, 'subcategory'])->name('subcategory');
 
     Route::get('products/{slug}', [FrontendController::class, 'products'])->name('products');
+    Route::get('brands/{slug}', [FrontendController::class, 'brands'])->name('brands');
 
     Route::get('hot-deals', [FrontendController::class, 'hotdeals'])->name('hotdeals');
     Route::get('livesearch', [FrontendController::class, 'livesearch'])->name('livesearch');

@@ -286,7 +286,37 @@
     @endif
 @endforeach
 
-@endsection @push('script')
+<!-- Start brand Area  -->
+<section class="homeproduct">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="sec_title">
+                    <h3 class="section-title-header">
+                        <span class="section-title-name"> Brand </span>
+                        
+                    </h3>
+                </div>
+            </div>
+            @foreach($brands as $item)
+            <div class="col-6 col-sm-4 col-lg-2" style="border: 2px solid #e9e9e9; border-radius: 6px; margin: 3px;">
+                <a href="{{ url('brands/' . $item->slug) }}" title="{{$item->name}}" style="transition: all 0.5s ease-in-out;box-shadow: 0 0 12px rgb(0 0 0 / 42%);" href="" class="cat-block">
+                    <figure>
+                        <span>
+                            <img style="padding: 10px;" src="{{ asset($item->image) }}" />
+                        </span>
+                    </figure>
+                </a>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+<!-- End brand Area  -->
+
+@endsection 
+
+@push('script')
 <script src="{{ asset('public/frontEnd/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('public/frontEnd/js/jquery.syotimer.min.js') }}"></script>
 
