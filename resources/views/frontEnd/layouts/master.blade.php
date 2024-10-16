@@ -100,7 +100,7 @@
               </div>
             </li>
 
-            <li class="dropdown notification-list topbar-dropdown">
+            {{--<li class="dropdown notification-list topbar-dropdown">
               <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <img src="" alt="user-image" class="rounded-circle" />
                 <span class="pro-user-name ms-1"> John <i class="mdi mdi-chevron-down"></i> </span>
@@ -140,7 +140,7 @@
                   @csrf
                 </form>
               </div>
-            </li>
+            </li>--}}
 
             <!--<li class="dropdown notification-list">-->
             <!--    <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">-->
@@ -180,7 +180,7 @@
             </li>
           </ul>
 
-          <div class="main-search">
+          {{--<div class="main-search">
               <form action="{{route('search')}}">
                   <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
                   <button>
@@ -188,7 +188,7 @@
                   </button>
               </form>
               <div class="search_result"></div>
-          </div>
+          </div>--}}
           <div class="clearfix"></div>
         </div>
       </div>
@@ -198,7 +198,7 @@
       <div class="left-side-menu">
         <div class="h-100" data-simplebar>
           <!-- User box -->
-          <div class="user-box text-center">
+          {{--<div class="user-box text-center">
             <img src="{{asset('public/backEnd/')}}/assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md" />
             <div class="dropdown">
               <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown">John</a>
@@ -237,7 +237,7 @@
               </div>
             </div>
             <p class="text-muted">Admin Head</p>
-          </div>
+          </div>--}}
 
           <!--- Sidemenu -->
           <div id="sidebar-menu">
@@ -286,7 +286,7 @@
     </div>
     <!-- Footer Start -->
     <footer class="footer">
-      <div class="container-fluid">
+      <div class="container">
           <div class="row">
             <div class="col-sm-4 mb-3 mb-sm-0">
                 <div class="footer-about">
@@ -350,7 +350,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-          <div class="container-fluid">
+          <div class="container">
               <div class="row">
                   <div class="col-sm-12">
                       <div class="copyright">
