@@ -102,8 +102,8 @@
 
             <li class="dropdown notification-list topbar-dropdown">
               <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="{{asset(Auth::user()->image)}}" alt="user-image" class="rounded-circle" />
-                <span class="pro-user-name ms-1"> {{Auth::user()->name}} <i class="mdi mdi-chevron-down"></i> </span>
+                <img src="" alt="user-image" class="rounded-circle" />
+                <span class="pro-user-name ms-1"> John <i class="mdi mdi-chevron-down"></i> </span>
               </a>
               <div class="dropdown-menu dropdown-menu-end profile-dropdown">
                 <!-- item-->
@@ -201,7 +201,7 @@
           <div class="user-box text-center">
             <img src="{{asset('public/backEnd/')}}/assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md" />
             <div class="dropdown">
-              <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown">{{Auth::user()->name}}</a>
+              <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown">John</a>
               <div class="dropdown-menu user-pro-dropdown">
                 <!-- item-->
                 <a href="javascript:void(0);" class="dropdown-item notify-item">
