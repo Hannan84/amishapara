@@ -1,31 +1,31 @@
-@extends('frontEnd.layouts.master')
-@section('title', $category->meta_title)
+@extends('frontEnd.layouts.master') 
+@section('title',$brand->slug) 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('public/frontEnd/css/jquery-ui.css') }}" />
-@endpush
+<link rel="stylesheet" href="{{asset('public/frontEnd/css/jquery-ui.css')}}" />
+@endpush 
 @push('seo')
-    <meta name="app-url" content="{{ route('category', $category->slug) }}" />
-    <meta name="robots" content="index, follow" />
-    <meta name="description" content="{{ $category->meta_description }}" />
-    <meta name="keywords" content="{{ $category->slug }}" />
+<meta name="app-url" content="{{route('products',$brand->slug)}}" />
+<meta name="robots" content="index, follow" />
+<!-- <meta name="description" content="{{ $brand->meta_description}}" /> -->
+<meta name="keywords" content="{{ $brand->slug }}" />
 
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="product" />
-    <meta name="twitter:site" content="{{ $category->name }}" />
-    <meta name="twitter:title" content="{{ $category->name }}" />
-    <meta name="twitter:description" content="{{ $category->meta_description }}" />
-    <meta name="twitter:creator" content="gomobd.com" />
-    <meta property="og:url" content="{{ route('category', $category->slug) }}" />
-    <meta name="twitter:image" content="{{ asset($category->image) }}" />
+<!-- Twitter Card data -->
+<meta name="twitter:card" content="product" />
+<meta name="twitter:site" content="{{$brand->name}}" />
+<meta name="twitter:title" content="{{$brand->name}}" />
+<!-- <meta name="twitter:description" content="{{ $brand->meta_description}}" /> -->
+<meta name="twitter:creator" content="gomobd.com" />
+<meta property="og:url" content="{{route('products',$brand->slug)}}" />
+<meta name="twitter:image" content="{{asset($brand->image)}}" />
 
-    <!-- Open Graph data -->
-    <meta property="og:title" content="{{ $category->name }}" />
-    <meta property="og:type" content="product" />
-    <meta property="og:url" content="{{ route('category', $category->slug) }}" />
-    <meta property="og:image" content="{{ asset($category->image) }}" />
-    <meta property="og:description" content="{{ $category->meta_description }}" />
-    <meta property="og:site_name" content="{{ $category->name }}" />
-@endpush
+<!-- Open Graph data -->
+<meta property="og:title" content="{{$brand->name}}" />
+<meta property="og:type" content="product" />
+<meta property="og:url" content="{{route('products',$brand->slug)}}" />
+<meta property="og:image" content="{{asset($brand->image)}}" />
+<!-- <meta property="og:description" content="{{ $brand->meta_description}}" /> -->
+<meta property="og:site_name" content="{{$brand->name}}" />
+@endpush 
 @section('content')
     <section class="product-section">
         <div class="container">
@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="category-breadcrumb d-flex align-items-center">
-                            <strong>{{ $category->name }}</strong>
+                            <strong>{{ $brand->name }}</strong>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -70,31 +70,6 @@
                 <div class="col-sm-3 filter_sidebar">
                     <div class="filter_close"><i class="fa fa-long-arrow-left"></i> Filter</div>
                     <form action="" class="attribute-submit">
-                        {{-- <div class="sidebar_item wraper__item">
-                            <div class="accordion" id="category_sidebar">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseCat" aria-expanded="true" aria-controls="collapseOne">
-                                            {{ $category->name }}
-                                        </button>
-                                    </h2>
-                                    <div id="collapseCat" class="accordion-collapse collapse show"
-                                        data-bs-parent="#category_sidebar">
-                                        <div class="accordion-body cust_according_body">
-                                            <ul>
-                                                @foreach ($category->subcategories as $key => $subcat)
-                                                    <li>
-                                                        <a
-                                                            href="{{ url('subcategory/' . $subcat->slug) }}">{{ $subcat->subcategoryName }}</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>--}}
                         <!--sidebar item end-->
                         <div class="sidebar_item wraper__item">
                             <div class="accordion" id="price_sidebar">
@@ -146,17 +121,17 @@
                                         <div class="accordion-body cust_according_body">
                                             <div class="filter-body">
                                                 <ul class="space-y-3">
-                                                    @foreach ($subcategories as $subcategory)
+                                                    @foreach ($brands as $brand)
                                                         <li class="subcategory-filter-list">
-                                                            <label for="{{ $subcategory->slug . '-' . $subcategory->id }}"
+                                                            <label for="{{ $brand->slug . '-' . $brand->id }}"
                                                                 class="subcategory-filter-label">
                                                                 <input class="form-checkbox form-attribute"
-                                                                    id="{{ $subcategory->slug . '-' . $subcategory->id }}"
-                                                                    name="subcategory[]" value="{{ $subcategory->id }}"
+                                                                    id="{{ $brand->slug . '-' . $brand->id }}"
+                                                                    name="brand[]" value="{{ $brand->id }}"
                                                                     type="checkbox"
-                                                                    @if (is_array(request()->get('subcategory')) && in_array($subcategory->id, request()->get('subcategory'))) checked @endif />
+                                                                    @if (is_array(request()->get('brand')) && in_array($brand->id, request()->get('brand'))) checked @endif />
                                                                 <p class="subcategory-filter-name">
-                                                                    {{ $subcategory->subcategoryName }}</p>
+                                                                    {{ $brand->name }}</p>
                                                             </label>
                                                         </li>
                                                     @endforeach
@@ -205,9 +180,9 @@
                                         <div class="pro_price">
                                             <p>
                                                 @if ($value->old_price != $value->new_price)
-                                                    <del>৳ {{ $value->old_price }}</del>
+                                                <del>৳ {{ $value->old_price }}</del>
                                                 @endif
-                                                ৳ {{ $value->new_price }}
+                                                ৳ {{ $value->new_price }} 
                                             </p>
                                         </div>
                                     </div>

@@ -258,7 +258,7 @@
                   <ul class="nav-second-level">
                     @foreach ($scategory->subcategories as $subcat)
                     <li>
-                      <a href="{{route('admin.orders',['slug'=>$value->slug])}}"><i data-feather="file-plus"></i>{{ $subcat->subcategoryName }}</a>
+                      <a href="{{ url('subcategory/' . $subcat->slug) }}"><i data-feather="file-plus"></i>{{ $subcat->subcategoryName }}</a>
                     </li>
                     @endforeach
                   </ul>
