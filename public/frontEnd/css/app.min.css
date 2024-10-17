@@ -1874,7 +1874,7 @@ body {
     color: var(--ct-menu-item-active);
 }
 .nav-second-level li a {
-    padding: 8px 20px;
+    padding: 6px 20px;
     color: var(--ct-menu-item);
     display: block;
     position: relative;
