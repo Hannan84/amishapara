@@ -2883,6 +2883,36 @@ section.product-inner {
     font-family: "Lato", sans-serif;
 }
 
+.product_item_inner .cart-badge {
+    position: absolute;
+    top: 160px;
+    right: -7px;
+    z-index: 1;
+}
+
+.product_item_inner .cart-badge-inner {
+    --cart-badge-width: 45px;
+    width: var(--cart-badge-width);
+    height: var(--cart-badge-width);
+}
+
+.product_item_inner .cart-badge-box {
+    background-color: #ed145b;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_item_inner span.cart-badge-text {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    font-family: "Lato", sans-serif;
+}
+
 .wist_item {
     position: relative;
 }

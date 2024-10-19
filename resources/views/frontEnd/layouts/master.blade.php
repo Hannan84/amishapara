@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="{{asset($generalsetting->favicon)}}" />
     <meta name="author" content="Super Ecommerce" />
     <link rel="canonical" href="" />
-    @stack('seo') 
+    @stack('seo')
     @stack('css')
     <link rel="stylesheet" href="{{asset('public/frontEnd/css/bootstrap.min.css')}}" />
     <link rel="stylesheet" href="{{asset('public/frontEnd/css/animate.css')}}" />
@@ -364,7 +364,7 @@
     <!-- end Footer -->
     <!-- END wrapper -->
 
-        
+
 
     <!-- Vendor js -->
     <script src="{{asset('public/backEnd/')}}/assets/js/vendor.min.js"></script>

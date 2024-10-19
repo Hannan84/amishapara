@@ -190,6 +190,15 @@
                                         </div>
                                     </div>
                                     @endif
+                                    <button class="cart-badge">
+                                        <div class="cart-badge-inner">
+                                            <div class="cart-badge-box">
+                                                <span class="cart-badge-text">
+                                                    <p class="text-white">+</p>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </button>
                                     <div class="pro_img">
                                         <a href="{{ route('product', $value->slug) }}">
                                             <img src="{{ asset($value->image ? $value->image->image : '') }}"
@@ -215,7 +224,7 @@
 
                                 @if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
                                     <div class="pro_btn">
-                                       
+
                                         <div class="cart_btn order_button">
                                             <a href="{{ route('product', $value->slug) }}"
                                                 class="addcartbutton">অর্ডার</a>
@@ -224,7 +233,7 @@
                                     </div>
                                 @else
                                     <div class="pro_btn">
-                                        
+
                                         <form action="{{ route('cart.store') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="id" value="{{ $value->id }}" />
@@ -250,14 +259,15 @@
         </div>
     </section>
 
+    {{-- Modal --}}
+
+
 @endsection
 @push('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script>
-        $("#price-range").click(function() {
-            $(".price-submit").submit();
-        })
+
         $(".form-attribute").on('change click',function(){
             $(".attribute-submit").submit();
         })
@@ -309,5 +319,11 @@
                 1));
 
         });
+    </script>
+    <script>
+        $(".cart-badge").click(function() {
+            // $(".product_item_inner").toggleClass("active");
+            alert("hello");
+        })
     </script>
 @endpush
