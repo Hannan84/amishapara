@@ -84,41 +84,82 @@
     <div id="wrapper">
       <!-- Topbar Start -->
       <div class="navbar-custom">
-        <div class="container-fluid">
-          <ul class="list-unstyled topnav-menu float-end mb-0">
-            <li class="dropdown d-inline-block d-lg-none">
-              <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <i class="fe-search noti-icon"></i>
-              </a>
-              <div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
-                <form class="p-3">
-                  <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username" />
-                </form>
-              </div>
-            </li>
-          </ul>
-          <!-- LOGO -->
-          <div class="logo-box">
-            <a href="{{url('/')}}" class="logo logo-light text-center">
-              <span class="logo-sm">
-                <img src="{{asset($generalsetting->white_logo)}}" alt="" height="50" />
-              </span>
-              <span class="logo-lg">
-                <img src="{{asset($generalsetting->white_logo)}}" alt="" height="50" />
-              </span>
-            </a>
-          </div>
-          {{--<div class="main-search">
-              <form action="{{route('search')}}">
-                  <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
-                  <button>
-                      <i data-feather="search"></i>
-                  </button>
-              </form>
-              <div class="search_result"></div>
-          </div>--}}
-          <div class="clearfix"></div>
-        </div>
+      @php $subtotal = Cart::instance('shopping')->subtotal(); @endphp
+        <div class="logo-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="logo-header">
+                                    <div class="main-logo">
+                                        <a href="{{route('home')}}"><img src="{{asset($generalsetting->white_logo)}}" alt="" /></a>
+                                    </div>
+                                    <div class="main-search">
+                                        <form action="{{route('search')}}">
+                                            <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
+                                            <button>
+                                                <i data-feather="search"></i>
+                                            </button>
+                                        </form>
+                                        <div class="search_result"></div>
+                                    </div>
+                                    <div class="header-list-items">
+                                        <ul>
+                                            <li class="track_btn">
+                                                <a href="{{route('customer.order_track')}}"> <i class="fa fa-truck"></i>Track</a>
+                                            </li>
+                                            @if(Auth::guard('customer')->user())
+                                            <li class="for_order">
+                                                <p>
+                                                    <a href="{{route('customer.account')}}">
+                                                        <i class="fa-regular fa-user"></i>
+
+                                                        {{Str::limit(Auth::guard('customer')->user()->name,14)}}
+                                                    </a>
+                                                </p>
+                                            </li>
+                                            @else
+                                            <li class="for_order">
+                                                <p>
+                                                    <a href="{{route('customer.login')}}">
+                                                        <i class="fa-regular fa-user"></i>
+                                                        Login
+                                                    </a>
+                                                </p>
+                                            </li>
+                                            @endif
+
+                                            <li class="cart-dialog" id="cart-qty">
+                                                <a href="{{route('customer.checkout')}}">
+                                                    <p class="margin-shopping">
+                                                        <i class="fa-solid fa-cart-shopping"></i>
+                                                        <span>{{Cart::instance('shopping')->count()}}</span>
+                                                    </p>
+                                                </a>
+                                                <div class="cshort-summary">
+                                                    <ul>
+                                                        @foreach(Cart::instance('shopping')->content() as $key=>$value)
+                                                        <li>
+                                                            <a href=""><img src="{{asset($value->options->image)}}" alt="" /></a>
+                                                        </li>
+                                                        <li><a href="">{{Str::limit($value->name, 30)}}</a></li>
+                                                        <li>Qty: {{$value->qty}}</li>
+                                                        <li>
+                                                            <p>৳{{$value->price}}</p>
+                                                            <button class="remove-cart cart_remove" data-id="{{$value->rowId}}"><i data-feather="x"></i></button>
+                                                        </li>
+                                                        @endforeach
+                                                    </ul>
+                                                    <p><strong>সর্বমোট : ৳{{$subtotal}}</strong></p>
+                                                    <a href="{{route('customer.checkout')}}" class="go_cart"> অর্ডার করুন </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
       </div>
       <!-- end Topbar -->
 
@@ -280,7 +321,7 @@
           </li>
 
           <li>
-              <a href="https://wa.me/8801740015800">
+              <a href="https://wa.me/8801888140165">
                   <span>
                       <i class="fa-solid fa-message"></i>
                   </span>

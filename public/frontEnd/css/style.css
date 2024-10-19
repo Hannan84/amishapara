@@ -286,8 +286,8 @@ li.Newsletter i {
 .main-search {
     margin: 12px 0 0 0;
     position: relative;
-    display: inline-flex;
-    width: 50%;
+    /* display: inline-flex; */
+    width: 100%;
 }
 .search_result {
     position: relative;
@@ -298,6 +298,7 @@ li.Newsletter i {
     background: #fff;
     z-index: 999999;
     border: 1px solid #ddd;
+    border-radius: 6px;
     top: 0;
 }
 
@@ -373,11 +374,11 @@ li.Newsletter i {
 .main-search form {
     border: 1px solid;
     height: 39px;
-    background: #f7f7f7;
-    border-color: #fe5200;
+    background: #ededed;
+    border-color: #ededed;
     width: 100%;
     margin: 0 auto;
-    border-radius: 5px;
+    border-radius: 14px;
     overflow: hidden;
     display: flex;
 }
@@ -386,7 +387,7 @@ li.Newsletter i {
     height: 100%;
     padding: 0 5px;
     font-size: 12px !important;
-    background: #f7f7f7;
+    background: #ededed;
     width: 90%;
     float: left;
 }
@@ -394,7 +395,7 @@ li.Newsletter i {
 .main-search form button {
     height: 100%;
     outline: 0;
-    background: #fe5200;
+    background: #c5c5c5;
     width: 11%;
     float: left;
 }
@@ -3606,12 +3607,11 @@ form.sort-form .form-select:focus {
 a.view_more_btn {
     text-align: right;
     float: right;
-    background: #fe5200;
     text-transform: capitalize;
     font-size: 15px;
-    padding: 10px 15px;
-    color: #fff;
-    font-family: "Lato", sans-serif;
+    padding: 10px 0px;
+    color: #0090d4;
+    font-family: "Roboto", sans-serif;
 }
 
 .register-now.no-account {
