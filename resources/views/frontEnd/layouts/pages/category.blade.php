@@ -322,8 +322,10 @@
     </script>
     <script>
         $(".cart-badge").click(function() {
-            // $(".product_item_inner").toggleClass("active");
-            alert("hello");
+            $(".product_item_inner").css("opacity", "0.7");
+            // alert("hello");
+            // $(".product_item").addClass("product-overflow-quantity show");
+
         })
     </script>
 @endpush
