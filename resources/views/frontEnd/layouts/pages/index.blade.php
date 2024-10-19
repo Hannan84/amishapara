@@ -299,7 +299,7 @@
                 </div>
             </div>
             @foreach($brands as $item)
-            <div class="col-6 col-sm-4 col-lg-2" style="border: 2px solid #e9e9e9; border-radius: 6px; margin: 3px;">
+            <div class="col-6 col-sm-4 col-lg-2">
                 <a href="{{ url('brands/' . $item->slug) }}" title="{{$item->name}}" style="transition: all 0.5s ease-in-out;box-shadow: 0 0 12px rgb(0 0 0 / 42%);" href="" class="cat-block">
                     <figure>
                         <span>

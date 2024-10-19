@@ -40,13 +40,53 @@
 
   <!-- body start -->
   <body data-layout-mode="default" data-theme="light" data-layout-width="fluid" data-topbar-color="dark" data-menu-position="fixed" data-leftbar-color="light" data-leftbar-size="default" data-sidebar-user="false">
-    <!-- Begin page -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-logo">
+            <div class="logo-image">
+                <img src="{{asset($generalsetting->white_logo)}}" alt="" />
+            </div>
+            <div class="mobile-menu-close">
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+        <ul class="first-nav">
+            @foreach($menucategories as $scategory)
+            <li class="parent-category">
+                <a href="{{url('category/'.$scategory->slug)}}" class="menu-category-name">
+                    <img src="{{asset($scategory->image)}}" alt="" class="side_cat_img" />
+                    {{$scategory->name}}
+                </a>
+                @if($scategory->subcategories->count() > 0)
+                <span class="menu-category-toggle">
+                    <i class="fa fa-chevron-down"></i>
+                </span>
+                @endif
+                <ul class="second-nav" style="display: none;">
+                    @foreach($scategory->subcategories as $subcategory)
+                    <li class="parent-subcategory">
+                        <a href="{{url('subcategory/'.$subcategory->slug)}}" class="menu-subcategory-name">{{$subcategory->subcategoryName}}</a>
+                        @if($subcategory->childcategories->count() > 0)
+                        <span class="menu-subcategory-toggle"><i class="fa fa-chevron-down"></i></span>
+                        @endif
+                        <ul class="third-nav" style="display: none;">
+                            @foreach($subcategory->childcategories as $childcat)
+                            <li class="childcategory"><a href="{{url('products/'.$childcat->slug)}}" class="menu-childcategory-name">{{$childcat->childcategoryName}}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    @endforeach
+                </ul>
+            </li>
+            @endforeach
+        </ul>
+    </div>
+  <!-- Begin page -->
     <div id="wrapper">
       <!-- Topbar Start -->
       <div class="navbar-custom">
         <div class="container-fluid">
           <ul class="list-unstyled topnav-menu float-end mb-0">
-            <!-- <li class="dropdown d-inline-block d-lg-none">
+            <li class="dropdown d-inline-block d-lg-none">
               <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="fe-search noti-icon"></i>
               </a>
@@ -55,98 +95,7 @@
                   <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username" />
                 </form>
               </div>
-            </li> -->
-
-            <li class="dropdown notification-list topbar-dropdown">
-              <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <i class="fe-bell noti-icon"></i>
-                <span class="badge bg-danger rounded-circle noti-icon-badge">{{$neworder}}</span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end dropdown-lg">
-                <!-- item-->
-                <div class="dropdown-item noti-title">
-                  <h5 class="m-0">
-                    <span class="float-end">
-                      <a href="{{route('admin.orders',['slug'=>'pending'])}}" class="text-dark">
-                        <small>View All</small>
-                      </a>
-                    </span>
-                    Orders
-                  </h5>
-                </div>
-
-                <div class="noti-scroll" data-simplebar>
-                  @foreach($pendingorder as $porder)
-                  <!-- item-->
-                  <a href="{{route('admin.orders',['slug'=>'pending'])}}" class="dropdown-item notify-item active">
-                    <div class="notify-icon">
-                      <img src="{{asset($porder->customer?$porder->customer->image:'')}}" class="img-fluid rounded-circle" alt="" />
-                    </div>
-                    <p class="notify-details">{{$porder->customer?$porder->customer->name:''}}</p>
-                    <p class="text-muted mb-0 user-msg">
-                      <small>Invoice : {{$porder->invoice_id}}</small>
-                    </p>
-                  </a>
-                  @endforeach
-
-                  <!-- item-->
-                </div>
-
-                <!-- All-->
-                <a href="{{route('admin.orders',['slug'=>'pending'])}}" class="dropdown-item text-center text-primary notify-item notify-all">
-                  View all
-                  <i class="fe-arrow-right"></i>
-                </a>
-              </div>
             </li>
-
-            {{--<li class="dropdown notification-list topbar-dropdown">
-              <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                <img src="" alt="user-image" class="rounded-circle" />
-                <span class="pro-user-name ms-1"> John <i class="mdi mdi-chevron-down"></i> </span>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end profile-dropdown">
-                <!-- item-->
-                <div class="dropdown-header noti-title">
-                  <h6 class="text-overflow m-0">Welcome !</h6>
-                </div>
-
-                <!-- item-->
-                <a href="{{route('dashboard')}}" class="dropdown-item notify-item">
-                  <i class="fe-user"></i>
-                  <span>Dashboard</span>
-                </a>
-
-                <!-- item-->
-                <a href="{{route('change_password')}}" class="dropdown-item notify-item">
-                  <i class="fe-settings"></i>
-                  <span>Change Password</span>
-                </a>
-
-
-                <div class="dropdown-divider"></div>
-
-                <!-- item-->
-                <a
-                  href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();"
-                  class="dropdown-item notify-item"
-                >
-                  <i class="fe-log-out me-1"></i>
-                  <span>Logout</span>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-                </form>
-              </div>
-            </li>--}}
-
-            <!--<li class="dropdown notification-list">-->
-            <!--    <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">-->
-            <!--        <i class="fe-settings noti-icon"></i>-->
-            <!--    </a>-->
-            <!--</li>-->
           </ul>
           <!-- LOGO -->
           <div class="logo-box">
@@ -159,27 +108,6 @@
               </span>
             </a>
           </div>
-
-          <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
-            <li>
-              <button class="button-menu-mobile waves-effect waves-light">
-                <i class="fe-menu"></i>
-              </button>
-            </li>
-
-            <li>
-              <!-- Mobile menu toggle (Horizontal Layout)-->
-              <a class="navbar-toggle nav-link" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
-                <div class="lines">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </a>
-              <!-- End mobile menu toggle-->
-            </li>
-          </ul>
-
           {{--<div class="main-search">
               <form action="{{route('search')}}">
                   <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
@@ -197,48 +125,6 @@
       <!-- ========== Left Sidebar Start ========== -->
       <div class="left-side-menu">
         <div class="h-100" data-simplebar>
-          <!-- User box -->
-          {{--<div class="user-box text-center">
-            <img src="{{asset('public/backEnd/')}}/assets/images/users/user-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle avatar-md" />
-            <div class="dropdown">
-              <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown">John</a>
-              <div class="dropdown-menu user-pro-dropdown">
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <i class="fe-user me-1"></i>
-                  <span>My Account</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <i class="fe-settings me-1"></i>
-                  <span>Settings</span>
-                </a>
-
-                <!-- item-->
-                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                  <i class="fe-lock me-1"></i>
-                  <span>Lock Screen</span>
-                </a>
-
-                <!-- item-->
-                <a
-                  href="{{ route('logout') }}"
-                  onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();"
-                  class="dropdown-item notify-item"
-                >
-                  <i class="fe-log-out me-1"></i>
-                  <span>Logout</span>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                  @csrf
-                </form>
-              </div>
-            </div>
-            <p class="text-muted">Admin Head</p>
-          </div>--}}
-
           <!--- Sidemenu -->
           <div id="sidebar-menu">
             <ul id="side-menu">
@@ -256,9 +142,27 @@
                 @if ($scategory->subcategories->count() > 0)
                 <div class="collapse" id="sidebar-{{ $key }}">
                   <ul class="nav-second-level">
-                    @foreach ($scategory->subcategories as $subcat)
+                    @foreach ($scategory->subcategories as $index => $subcat)
                     <li>
-                      <a href="{{ url('subcategory/' . $subcat->slug) }}"><i data-feather="file-plus"></i>{{ $subcat->subcategoryName }}</a>
+                      <a href="{{ url('subcategory/' . $subcat->slug) }}">
+                        <i data-feather="file-plus"></i>{{ $subcat->subcategoryName }}
+                        @if($subcat->childcategories->count() > 0)
+                        <a href="#subsidebar-{{ $index }}" data-bs-toggle="collapse">
+                          <span class="menu-arrow sub-menu-arrow"></span>
+                        </a>
+                        @endif
+                      </a>
+                      @if($subcat->childcategories->count() > 0)
+                      <div class="collapse" id="subsidebar-{{ $index }}">
+                        <ul class="nav-second-level">
+                          @foreach($subcat->childcategories as $childcat)
+                          <li class="sub">
+                            <a href="{{url('products/'.$childcat->slug)}}"><i data-feather="file-plus"></i>{{$childcat->childcategoryName}}</a>
+                          </li>
+                          @endforeach
+                        </ul>
+                      </div>
+                      @endif
                     </li>
                     @endforeach
                   </ul>
@@ -364,7 +268,61 @@
     <!-- end Footer -->
     <!-- END wrapper -->
 
+    <div class="footer_nav">
+      <ul>
+          <li>
+              <a class="toggle">
+                  <span>
+                      <i class="fa-solid fa-bars"></i>
+                  </span>
+                  <span>Category</span>
+              </a>
+          </li>
 
+          <li>
+              <a href="https://wa.me/8801740015800">
+                  <span>
+                      <i class="fa-solid fa-message"></i>
+                  </span>
+                  <span>Message</span>
+              </a>
+          </li>
+
+          <li class="mobile_home">
+              <a href="{{route('home')}}">
+                  <span><i class="fa-solid fa-home"></i></span> <span>Home</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="{{route('customer.checkout')}}">
+                  <span>
+                      <i class="fa-solid fa-cart-shopping"></i>
+                  </span>
+                  <span>Cart (<b class="mobilecart-qty">{{Cart::instance('shopping')->count()}}</b>)</span>
+              </a>
+          </li>
+          @if(Auth::guard('customer')->user())
+          <li>
+              <a href="{{route('customer.account')}}">
+                  <span>
+                      <i class="fa-solid fa-user"></i>
+                  </span>
+                  <span>Account</span>
+              </a>
+          </li>
+          @else
+          <li>
+              <a href="{{route('customer.login')}}">
+                  <span>
+                      <i class="fa-solid fa-user"></i>
+                  </span>
+                  <span>Login</span>
+              </a>
+          </li>
+          @endif
+      </ul>
+  </div>
 
     <!-- Vendor js -->
     <script src="{{asset('public/backEnd/')}}/assets/js/vendor.min.js"></script>

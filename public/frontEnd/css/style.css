@@ -4333,3 +4333,10 @@ td.tfoot_bg {
     right: 0px;
     top: -29px;
 }
+
+.sub-menu-arrow {
+    left: 165px;
+}
+.nav-second-level .sub a {
+    padding: 4px 20px;
+}
