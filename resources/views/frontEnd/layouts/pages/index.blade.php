@@ -108,7 +108,7 @@
     </div>
 </section>
 
-@if($hotdeal_top)
+@if($hotdeal_top->count() > 0)
 <section class="homeproduct">
     <div class="container">
         <div class="row">
@@ -119,6 +119,7 @@
                             <div class="">
                                 <span class="section-title-name"> Hot Deal </span>
                             </div>
+                            <a href="{{ route('hotdeals') }}" class="view_more_btn" style="float:left">View All>></a> 
 
                             <!-- <div class="">
                                 <div class="offer_timer" id="simple_timer"></div>
@@ -132,7 +133,7 @@
                     @foreach ($hotdeal_top as $key => $value)
                         <div class="product_item wist_item">
                             <div class="product_item_inner">
-                                @if($value->old_price != $value->new_price)
+                                @if($value->old_price)
                                 <div class="sale-badge">
                                     <div class="sale-badge-inner">
                                         <div class="sale-badge-box">
@@ -157,7 +158,7 @@
                                     </div>
                                     <div class="pro_price">
                                         <p>
-                                            @if ($value->old_price != $value->new_price)
+                                            @if ($value->old_price)
                                              <del>৳ {{ $value->old_price }}</del>
                                             @endif
 
@@ -191,9 +192,6 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-sm-12">
-               <a href="{{ route('hotdeals') }}" class="view_more_btn" style="float:left">View More</a> 
-            </div>
         </div>
     </div>
 </section>
@@ -206,8 +204,8 @@
                 <div class="col-sm-12">
                     <div class="sec_title">
                         <h3 class="section-title-header">
-                            <span class="section-title-name">{{ $homecat->name }}</span>
-                            
+                            <span class="section-title-name">{{ $homecat->name }}</span> 
+                            <a href="{{ route('category', $homecat->slug) }}" class="view_more_btn">View All>></a>                           
                         </h3>
                     </div>
                 </div>
@@ -216,7 +214,7 @@
                         @foreach ($homecat->products as $key => $value)
                            <div class="product_item wist_item">
                             <div class="product_item_inner">
-                                @if($value->old_price != $value->new_price)
+                                @if($value->old_price)
                                 <div class="sale-badge">
                                     <div class="sale-badge-inner">
                                         <div class="sale-badge-box">
@@ -241,7 +239,7 @@
                                     </div>
                                     <div class="pro_price">
                                         <p>
-                                            @if ($value->old_price != $value->new_price)
+                                            @if ($value->old_price)
                                              <del>৳ {{ $value->old_price }}</del>
                                             @endif
 
@@ -273,11 +271,6 @@
                             @endif
                         </div>
                         @endforeach
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="show_more_btn">
-                        <a href="{{ route('category', $homecat->slug) }}" class="view_more_btn">View More</a>
                     </div>
                 </div>
             </div>
@@ -332,9 +325,9 @@
             margin: 0,
             mouseDrag: true,
             smartSpeed: 8000,
-            autoplayTimeout: 3000,
-            animateOut: "fadeOutDown",
-            animateIn: "slideInDown",
+            autoplayTimeout: 7000,
+            animateOut: "fadeOutLeft",
+            animateIn: "slideInRight",
 
             navText: ["<i class='fa-solid fa-angle-left'></i>",
                 "<i class='fa-solid fa-angle-right'></i>"

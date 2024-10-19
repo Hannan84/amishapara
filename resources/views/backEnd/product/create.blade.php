@@ -122,7 +122,7 @@
             <!-- col-end -->
             <div class="col-sm-4">
               <div class="form-group mb-3">
-                <label for="old_price" class="form-label">Old Price *</label>
+                <label for="old_price" class="form-label">Old Price (Optional)</label>
                 <input type="text" class="form-control @error('old_price') is-invalid @enderror" name="old_price" value="{{ old('old_price') }}" id="old_price" />
                 @error('old_price')
                 <span class="invalid-feedback" role="alert">
