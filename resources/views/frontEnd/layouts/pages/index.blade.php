@@ -169,7 +169,7 @@
                                 </div>
                             </div>
 
-                            @if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
+                           {{--@if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
                                 <div class="pro_btn">
                                    
                                     <div class="cart_btn order_button">
@@ -187,7 +187,8 @@
                                         <button type="submit">অর্ডার করুন</button>
                                     </form>
                                 </div>
-                            @endif
+                            @endif--}}
+                            <button class="add-to-cart-button" data-id="{{ $value->id }}">Add to Cart</button>
                         </div>
                     @endforeach
                 </div>
@@ -429,4 +430,45 @@
         periodInterval: 1,
     });
 </script> -->
+
+<script>
+    $(document).on('click', '.add-to-cart-button', function(e) {
+        e.preventDefault();
+
+        var productId = $(this).data('id');
+        var qty = 1;
+
+        $.ajax({
+            url: '{{ route('cart.store') }}',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                id: productId,
+                qty: qty,
+            },
+            success: function(data) {
+                if(data){
+                    return cart_count();
+                }
+            },
+            error: function(xhr) {
+                // Handle errors (optional)
+                alert('Something went wrong!');
+            }
+        });
+    });
+    function cart_count(){
+        $.ajax({
+            type:"GET",
+            url:"{{route('cart.count')}}",
+            success:function(data){               
+            if(data){
+                $("#cart-qty").html(data);
+            }else{
+                $("#cart-qty").empty();
+            }
+            }
+        }); 
+    };
+</script>
 @endpush

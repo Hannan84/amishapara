@@ -46,9 +46,12 @@ class ShoppingController extends Controller
             ],
         ]);
 
-        Toastr::success('Product successfully add to cart', 'Success!');
-        return redirect()->route('customer.checkout');
-        
+        // Toastr::success('Product successfully add to cart', 'Success!');
+        // return redirect()->route('customer.checkout');
+        // return redirect()->back();
+
+        $data = Cart::instance('shopping')->content();
+        return view('frontEnd.layouts.ajax.cart', compact('data'));
     }
     public function cart_remove(Request $request)
     {

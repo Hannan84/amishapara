@@ -178,7 +178,7 @@
     li.mobile_home {
         border: 2px solid #ddd;
         margin-top: -35px;
-        background: #fe5200;
+        background: #06841d;
         padding-top: 15px;
         border-radius: 50%;
         width: 75px;
@@ -292,7 +292,7 @@
     }
 
     .mobile-menu::-webkit-scrollbar-thumb {
-        background-color: #fe5200;
+        background-color: #06841d;
     }
 
     .mobile-search {

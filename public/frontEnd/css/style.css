@@ -507,7 +507,7 @@ li.Newsletter i {
     position: absolute;
     top: -8px;
     right: -12px;
-    background: #fe5200;
+    background: #06841d;
     color: #fff;
     height: 18px;
     width: 18px;
@@ -635,7 +635,7 @@ li.Newsletter i {
 
 .go_cart,
 .go_cart:hover {
-    background: #fe5200;
+    background: #06841d;
     width: 100%;
     color: #fff;
     border-radius: 5px;
@@ -884,6 +884,7 @@ section.slider-section {
 .home-slider-container {
     padding: 0;
     padding-left: 0px;
+    border-radius: 13px;
 }
 
 .homeproduct {
@@ -1051,7 +1052,9 @@ section.slider-section {
 .slider-item img {
     width: 100%;
 }
-
+.owl-stage-outer {
+    border-radius: 13px;
+}
 /*==== SLIDER CSS END ====  */
 
 /*==== FRONT CATEGORY  CSS START ====  */
