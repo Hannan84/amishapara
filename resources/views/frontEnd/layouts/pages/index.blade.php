@@ -251,7 +251,7 @@
                                 </div>
                             </div>
 
-                            @if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
+                            {{--@if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
                                 <div class="pro_btn">
                                    
                                     <div class="cart_btn order_button">
@@ -269,7 +269,8 @@
                                         <button type="submit">অর্ডার করুন</button>
                                     </form>
                                 </div>
-                            @endif
+                            @endif--}}
+                            <!-- <button class="add-to-cart-button" data-id="{{ $value->id }}">Add to Cart</button> -->
                         </div>
                         @endforeach
                     </div>
