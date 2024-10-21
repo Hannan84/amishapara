@@ -2435,7 +2435,7 @@ li.recent_pro {
 }
 
 .order_place {
-    background: #fe5200;
+    background: #06841d;
     display: block;
     width: 100%;
     border-radius: 5px;
@@ -3058,7 +3058,7 @@ section.product-inner {
 }
 
 .pro_price p {
-    color: #fe5200;
+    color: #06841d;
     font-weight: 500;
     margin-top: 5px;
     text-align: center;
@@ -3073,7 +3073,7 @@ section.product-inner {
     grid-gap: 4px;
 }
 .pro_btn button {
-    background: #fe5200;
+    background: #06841d;
     color: #fff;
     width: 60%;
     padding: 6px 0px;
