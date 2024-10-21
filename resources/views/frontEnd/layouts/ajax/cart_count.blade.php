@@ -7,7 +7,7 @@
 <a href="{{route('customer.checkout')}}">
   <p class="margin-shopping">
   <i class="fa-solid fa-cart-shopping"></i>
-  <span>{{Cart::instance('shopping')->count()}}</span>
+  <span>{{Cart::instance('shopping')->content()->count()}}</span>
   
   </p></a>
   <div class="cshort-summary">
@@ -55,9 +55,9 @@
              url:"{{route('cart.count')}}",
              success:function(data){               
               if(data){
-                $("#cart-qty").html(data);
+                $(".cart-qty").html(data);
               }else{
-                 $("#cart-qty").empty();
+                 $(".cart-qty").empty();
               }
              }
           }); 

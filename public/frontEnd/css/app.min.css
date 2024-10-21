@@ -2271,6 +2271,9 @@ body[data-leftbar-size="condensed"] .user-box {
     .footer {
         left: 0 !important;
     }
+    .content-page{
+        margin-top: 113px;
+    }
 }
 body[data-leftbar-size="compact"]:not([data-leftbar-size="condensed"])
     .logo-box {

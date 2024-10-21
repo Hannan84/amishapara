@@ -233,13 +233,8 @@
                                     </div>
                                 @else
                                     <div class="pro_btn">
+                                    <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
 
-                                        <form action="{{ route('cart.store') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $value->id }}" />
-                                            <input type="hidden" name="qty" value="1" />
-                                            <button type="submit">অর্ডার</button>
-                                        </form>
                                     </div>
                                 @endif
 

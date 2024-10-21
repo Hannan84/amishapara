@@ -142,9 +142,9 @@
            url:"{{route('cart.count')}}",
            success:function(data){               
             if(data){
-                $("#cart-qty").html(data);
+                $(".cart-qty").html(data);
             }else{
-               $("#cart-qty").empty();
+               $(".cart-qty").empty();
             }
            }
         }); 

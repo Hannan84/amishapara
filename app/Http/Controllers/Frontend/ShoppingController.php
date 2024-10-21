@@ -55,7 +55,8 @@ class ShoppingController extends Controller
     }
     public function cart_remove(Request $request)
     {
-        $remove = Cart::instance('shopping')->update($request->id, 0);
+        // $remove = Cart::instance('shopping')->update($request->id, 0);
+        $remove = Cart::instance('shopping')->remove($request->id);
         $data = Cart::instance('shopping')->content();
         return view('frontEnd.layouts.ajax.cart', compact('data'));
     }
@@ -77,12 +78,12 @@ class ShoppingController extends Controller
     }
     public function cart_count(Request $request)
     {
-        $data = Cart::instance('shopping')->count();
+        $data = Cart::instance('shopping')->content()->count();
         return view('frontEnd.layouts.ajax.cart_count', compact('data'));
     }
     public function mobilecart_qty(Request $request)
     {
-        $data = Cart::instance('shopping')->count();
+        $data = Cart::instance('shopping')->content()->count();
         return view('frontEnd.layouts.ajax.mobilecart_qty', compact('data'));
     }
 

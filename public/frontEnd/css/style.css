@@ -587,7 +587,7 @@ li.Newsletter i {
 }
 
 .submit-btn {
-    background: #fe5200 !important;
+    background: #06841d !important;
     display: block;
     width: 100%;
     border: 0;
@@ -609,7 +609,7 @@ li.Newsletter i {
 }
 
 .register-now a:hover {
-    background: #fe5200;
+    background: #06841d;
     color: #fff;
 }
 
@@ -2960,7 +2960,7 @@ section.product-inner {
 }
 
 .product_item:hover .product_item_inner {
-    border-color: #fe5200;
+    border-color: #06841d;
 }
 
 .product_item {

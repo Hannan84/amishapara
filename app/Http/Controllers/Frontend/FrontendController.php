@@ -35,7 +35,7 @@ class FrontendController extends Controller
         $frontcategory = Category::where(['status' => 1, 'featured' => 1])
             ->select('id', 'name', 'image', 'slug', 'status')
             ->get();
-        $brands = Brand::where('status',1)->take(12)->get();
+        $brands = Brand::where('status',1)->get();
 
         $sliders = Banner::where(['status' => 1, 'category_id' => 1])
             ->select('id', 'image', 'link')
@@ -52,7 +52,7 @@ class FrontendController extends Controller
             ->get();
 
         $hotdeal_top = Product::where(['status' => 1, 'topsale' => 1])
-            ->orderBy('id', 'DESC')
+            ->orderBy('id', 'ASC')
             ->select('id', 'name', 'slug', 'new_price', 'old_price')
             ->with('prosizes', 'procolors')
             ->limit(12)

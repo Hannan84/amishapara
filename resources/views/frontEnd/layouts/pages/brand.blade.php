@@ -153,7 +153,7 @@
                             <div class="product_item wist_item  wow fadeInDown" data-wow-duration="1.5s"
                                 data-wow-delay="0.{{ $key }}s">
                                 <div class="product_item_inner">
-                                    @if($value->old_price != $value->new_price)
+                                    @if($value->old_price)
                                     <div class="sale-badge">
                                         <div class="sale-badge-inner">
                                             <div class="sale-badge-box">
@@ -179,7 +179,7 @@
                                         </div>
                                         <div class="pro_price">
                                             <p>
-                                                @if ($value->old_price != $value->new_price)
+                                                @if ($value->old_price)
                                                 <del>৳ {{ $value->old_price }}</del>
                                                 @endif
                                                 ৳ {{ $value->new_price }} 
@@ -199,13 +199,7 @@
                                     </div>
                                 @else
                                     <div class="pro_btn">
-                                        
-                                        <form action="{{ route('cart.store') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="id" value="{{ $value->id }}" />
-                                            <input type="hidden" name="qty" value="1" />
-                                            <button type="submit">অর্ডার</button>
-                                        </form>
+                                        <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
                                     </div>
                                 @endif
 
