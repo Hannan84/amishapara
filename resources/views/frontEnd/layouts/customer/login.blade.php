@@ -10,8 +10,8 @@
                     <form action="{{route('customer.signin')}}" method="POST"  data-parsley-validate="">
                         @csrf
                         <div class="form-group mb-3">
-                            <label for="phone">মোবাইল নাম্বার</label>
-                            <input type="number" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}"  required>
+                            <label for="username">মোবাইল নাম্বার/ইমেইল</label>
+                            <input type="text" id="username" class="form-control @error('phone') is-invalid @enderror" name="username" value="{{ old('username') }}"  required>
                             @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
