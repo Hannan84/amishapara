@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('image')->default('public/uploads/category/default.png');
             $table->string('meta_title')->nullable();
             $table->text('meta_decription')->nullable();
+            $table->integer('front_view')->nullable();
+            $table->tinyInteger('featured')->nullable();
             $table->tinyInteger('status');
             $table->timestamps();
         });
