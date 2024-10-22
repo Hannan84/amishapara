@@ -82,7 +82,7 @@ class FrontendController extends Controller
 
         $products = Product::where(['status' => 1, 'topsale' => 1])
             ->select('id', 'name', 'slug', 'new_price', 'old_price')
-            ->paginate(36);
+            ->get();
         return view('frontEnd.layouts.pages.hotdeals', compact('products'));
     }
 
@@ -325,7 +325,7 @@ class FrontendController extends Controller
         if ($request->category) {
             $products = $products->where('category_id', $request->category);
         }
-        $products = $products->paginate(36);
+        $products = $products->get();
         $keyword = $request->keyword;
         return view('frontEnd.layouts.pages.search', compact('products', 'keyword'));
     }

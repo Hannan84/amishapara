@@ -99,13 +99,7 @@
                         @else
 
                         <div class="pro_btn">
-                           
-                            <form action="{{route('cart.store')}}" method="POST">
-                                @csrf
-                                <input type="hidden" name="id" value="{{$value->id}}" />
-                                <input type="hidden" name="qty" value="1" />
-                                <button type="submit">অর্ডার</button>
-                            </form>
+                            <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
                         </div>
                         @endif
                         
@@ -114,14 +108,14 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        {{--<div class="row">
             <div class="col-sm-12">
                 <div class="custom_paginate">
                     {{$products->links('pagination::bootstrap-4')}}
                    
                 </div>
             </div>
-        </div>
+        </div>--}}
     </div>
 </section>
 
