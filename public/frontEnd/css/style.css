@@ -385,7 +385,7 @@ li.Newsletter i {
 
 .main-search form input {
     height: 100%;
-    padding: 0 5px;
+    padding: 0 15px;
     font-size: 12px !important;
     background: #ededed;
     width: 90%;
@@ -948,7 +948,7 @@ section.slider-section {
 }
 
 .sidebar_item h2.accordion-header button.accordion-button {
-    background-color: #fe5200;
+    background-color: #06841d;
     color: #fff;
     text-transform: uppercase;
     font-size: 14px;
@@ -1330,7 +1330,7 @@ section.slider-section {
 
 .product-code p {
     display: inline-block;
-    background: #fe5200;
+    background: #06841d;
     color: #fff;
     padding: 0px 10px;
     border-top: 15px solid transparent;
@@ -1429,8 +1429,8 @@ section.slider-section {
 
 .add_cart_btn {
     color: #fff;
-    background-color: #fe5200;
-    border: 1px solid #fe5200;
+    background-color: #06841d;
+    border: 1px solid #06841d;
     border-radius: 0;
     width: 50%;
     height: 45px;
@@ -1586,12 +1586,12 @@ section.slider-section {
 .details-action-box .section-head .action .details-action-btn {
     padding: 5px 20px;
     background-color: #fff;
-    border: 2px solid #fe5200;
+    border: 2px solid #06841d;
     border-radius: 5px;
     color: #fff;
     font-size: 1rem;
     transition: all 0.3s ease;
-    background: #fe5200;
+    background: #06841d;
     cursor: pointer;
 }
 
@@ -1619,9 +1619,9 @@ section.slider-section {
     width: 80px;
     text-align: center;
     line-height: 80px;
-    background-color: #fe520033;
+    background-color: #9be2a8;
     border-radius: 50%;
-    color: #fe5200;
+    color: #06841d;
 }
 
 p.empty-text {
@@ -1729,12 +1729,12 @@ button.details-review-button {
     color: #555;
 }
 .subcategory-filter-label:hover {
-    background-color: #fe520038;
+    background-color: #9be2a8;
 }
 
 .subcategory-filter-label input {
     position: relative;
-    border: 2px solid #fe5200;
+    border: 2px solid #06841d;
     border-radius: 2px;
     background: none;
     cursor: pointer;
@@ -1751,7 +1751,7 @@ button.details-review-button {
 }
 
 .subcategory-filter-label input[type="checkbox"]:checked {
-    background-color: #fe5200;
+    background-color: #06841d;
     opacity: 1;
 }
 
@@ -1783,7 +1783,7 @@ p.max-price input {
 }
 
 .ui-slider-horizontal .ui-slider-range {
-    background-color: #fe5200;
+    background-color: #06841d;
 }
 
 .ui-state-default,
@@ -2692,7 +2692,7 @@ a.custom-button {
 .related-product-section button.owl-prev:hover i,
 .product-inner button.owl-next:hover i,
 .related-product-section button.owl-next:hover i {
-    background-color: #fe5200;
+    background-color: #06841d;
     border-radius: 50%;
     line-height: 35px;
     text-align: center;
@@ -3046,7 +3046,7 @@ section.product-inner {
     transform: scale(1.1);
 }
 .product_item:hover {
-    border-color: #fe5200 !important;
+    border-color: #06841d !important;
 }
 
 .pro_des {
@@ -3967,7 +3967,7 @@ a.forget-link {
 }
 
 .cart_btn.order_button a {
-    background: #fe5200;
+    background: #06841d;
     color: #fff;
     width: 60%;
     padding: 6px 0px;
@@ -4365,6 +4365,13 @@ td.tfoot_bg {
     display: flex;
     flex-direction: column;
     z-index: 1;
+}
+i.fa-solid.fa-angle-left:hover {
+    color: #06841d !important;
+}
+
+i.fa-solid.fa-angle-right:hover {
+    color: #06841d !important;
 }
 
 /*strat show cart opacity */
