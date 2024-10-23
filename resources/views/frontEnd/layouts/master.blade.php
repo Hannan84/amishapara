@@ -574,6 +574,39 @@
                     });
                 }
             });
+            $(".cart_increment_by_id").on("click", function () {
+                var id = $(this).data("id");
+                if (id) {
+                    $.ajax({
+                        type: "GET",
+                        data: { id: id },
+                        url: "{{route('cart.increment_by_id')}}",
+                        success: function (data) {
+                            if (data) {
+                                $(".cartlist").html(data);
+                                return cart_count() + mobile_cart();
+                            }
+                        },
+                    });
+                }
+            });
+
+            $(".cart_decrement_by_id").on("click", function () {
+                var id = $(this).data("id");
+                if (id) {
+                    $.ajax({
+                        type: "GET",
+                        data: { id: id },
+                        url: "{{route('cart.decrement_by_id')}}",
+                        success: function (data) {
+                            if (data) {
+                                $(".cartlist").html(data);
+                                return cart_count() + mobile_cart();
+                            }
+                        },
+                    });
+                }
+            });
 
             function cart_count() {
                 $.ajax({

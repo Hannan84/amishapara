@@ -89,6 +89,9 @@ Route::group(['namespace'=>'Frontend', 'middleware' => ['ipcheck','check_refer']
     Route::get('cart/decrement', [ShoppingController::class, 'cart_decrement'])->name('cart.decrement');
 
     Route::get('cart/increment', [ShoppingController::class, 'cart_increment'])->name('cart.increment');
+    Route::get('cart/decrement_id', [ShoppingController::class, 'cart_decrement_by_id'])->name('cart.decrement_by_id');
+
+    Route::get('cart/increment_id', [ShoppingController::class, 'cart_increment_by_id'])->name('cart.increment_by_id');
 
 });
 

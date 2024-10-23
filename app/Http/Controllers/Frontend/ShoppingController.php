@@ -83,6 +83,22 @@ class ShoppingController extends Controller
         $data = Cart::instance('shopping')->content();
         return view('frontEnd.layouts.ajax.cart', compact('data'));
     }
+    public function cart_increment_by_id(Request $request)
+    {
+        $item = Cart::instance('shopping')->content()->where('id', $request->id)->first();
+        $qty = $item->qty + 1;
+        $increment = Cart::instance('shopping')->update($item->rowId, $qty);
+        $data = Cart::instance('shopping')->content();
+        return view('frontEnd.layouts.ajax.cart', compact('data'));
+    }
+    public function cart_decrement_by_id(Request $request)
+    {
+        $item = Cart::instance('shopping')->content()->where('id', $request->id)->first();
+        $qty = $item->qty - 1;
+        $decrement = Cart::instance('shopping')->update($item->rowId, $qty);
+        $data = Cart::instance('shopping')->content();
+        return view('frontEnd.layouts.ajax.cart', compact('data'));
+    }
     public function cart_increment(Request $request)
     {
         $item = Cart::instance('shopping')->get($request->id);
