@@ -264,15 +264,23 @@
                                 </div>
                                 <div class="cart-items-number product-after-add-cart d-flex flex-coloumn"> </div>
                                 <div class="hover-quantity-area">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <button type="button" class="minus-quantity"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></button>
-                                        <input type="text" name="quantity" readonly="" class="qty form-control" value="">
-                                        <button type="button" class="plus-quantity"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></button>
+                                    <div class="qty d-flex justify-content-between align-items-center">
+                                        <button type="button" class="minus cart_decrement" data-id="{{ $value->rowId }}"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></button>
+                                        <input type="text" name="qty" class="qty form-control" value="1">
+                                        <button type="button" class="plus cart_increment" data-id="{{ $value->rowId }}"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></button>
                                     </div>
                                 </div>
                                 <p class="text-white text-center pt-3 mb-0 hover-quantity-area-textcart">in cart</p>
                             </div>
-                            <button class="toggle-btn">Active</button>
+                            <button class="cart-badge add-to-cart-button" data-id="{{ $value->id }}">
+                                <div class="cart-badge-inner">
+                                    <div class="cart-badge-box">
+                                        <span class="cart-badge-text">
+                                            <p class="text-white">+</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </button>
                         </div>
                         @endforeach
                     </div>
@@ -318,8 +326,27 @@
 <script src="{{ asset('public/frontEnd/js/jquery.syotimer.min.js') }}"></script>
 
 <script>
+    $(document).ready(function() {
+        $(".minus").click(function() {
+            var $input = $(this).parent().find("input");
+            var count = parseInt($input.val()) - 1;
+            count = count < 1 ? 1 : count;
+            $input.val(count);
+            $input.change();
+            return false;
+        });
+        $(".plus").click(function() {
+            var $input = $(this).parent().find("input");
+            $input.val(parseInt($input.val()) + 1);
+            $input.change();
+            return false;
+        });
+    });
+</script>
+
+<script>
 $(document).ready(function() {
-    $('.toggle-btn').each(function() {
+    $('.cart-badge').each(function() {
         $(this).click(function() {
             const $status = $(this).siblings('.product-overflow-quantity'); // Get the sibling status div
 

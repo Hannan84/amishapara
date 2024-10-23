@@ -129,7 +129,7 @@
                                             <div class="product-code">
                                                 <p><span>প্রোডাক্ট কোড : </span>{{ $details->product_code }}</p>
                                             </div>
-                                            <form action="{{ route('cart.store') }}" method="POST" name="formName">
+                                            <form action="{{ route('cart.detail.store') }}" method="POST" name="formName">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $details->id }}" />
                                                 @if ($productcolors->count() > 0)
@@ -207,10 +207,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="d-flex single_product col-sm-12">
-                                                                <!-- <input type="submit" class="btn px-4 add_cart_btn"
+                                                                <input type="submit" class="btn px-4 order_now_btn"
                                                                     onclick="return sendSuccess();" name="add_cart"
-                                                                    value="কার্টে যোগ করুন " /> -->
-                                                                    <button class="add-to-cart-button" data-id="{{ $details->id }}">অর্ডার করুন</button>
+                                                                    value="কার্টে যোগ করুন " />
                                                                 <!-- <input type="submit"
                                                                     class="btn px-4 order_now_btn order_now_btn_m"
                                                                     onclick="return sendSuccess();" name="order_now"
@@ -219,7 +218,7 @@
                                                         </div>
                                                         <div class="mt-md-2 mt-2">
                                                             <h4 class="font-weight-bold">
-                                                                <a class="btn btn-success w-50 call_now_btn"
+                                                                <a class="btn btn-success w-100 call_now_btn"
                                                                     href="tel: {{ $contact->hotline }}">
                                                                     <i class="fa fa-phone-square"></i>
                                                                     {{ $contact->hotline }}

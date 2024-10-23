@@ -317,9 +317,7 @@
     </script>
     <script>
         $(".cart-badge").click(function() {
-            $(".product_item_inner").addClass("product-overflow-quantity show");
             // alert("hello");
-            // $(".product_item").addClass("product-overflow-quantity show");
 
         })
     </script>
