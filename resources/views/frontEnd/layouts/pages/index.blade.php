@@ -108,204 +108,186 @@
     </div>
 </section>
 
-@if ($hotdeal_top->count() > 0)
+@if($hotdeal_top->count() > 0)
+<section class="homeproduct">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="sec_title">
+                    <h3 class="section-title-header">
+                        <div class="timer_inner">
+                            <div class="">
+                                <span class="section-title-name"> Hot Deal </span>
+                            </div>
+                            <a href="{{ route('hotdeals') }}" class="view_more_btn" style="float:left">View All>></a>
+
+                            <!-- <div class="">
+                                <div class="offer_timer" id="simple_timer"></div>
+                            </div> -->
+                        </div>
+                    </h3>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="product_slider owl-carousel">
+                    @foreach ($hotdeal_top as $key => $value)
+                        <div class="product_item wist_item">
+                            <div class="product_item_inner">
+                                @if($value->old_price)
+                                <div class="sale-badge">
+                                    <div class="sale-badge-inner">
+                                        <div class="sale-badge-box">
+                                            <span class="sale-badge-text">
+                                                <p>@php $discount=(((($value->old_price)-($value->new_price))*100) / ($value->old_price)) @endphp {{ number_format($discount, 0) }}%</p>
+                                                ছাড়
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                <div class="pro_img">
+                                    <a href="{{ route('product', $value->slug) }}">
+                                        <img src="{{ asset($value->image ? $value->image->image : '') }}"
+                                            alt="{{ $value->name }}" />
+                                    </a>
+                                </div>
+                                <div class="pro_des">
+                                    <div class="pro_name">
+                                        <a
+                                            href="{{ route('product', $value->slug) }}">{{ Str::limit($value->name, 80) }}</a>
+                                    </div>
+                                    <div class="pro_price">
+                                        <p>
+                                            @if ($value->old_price)
+                                             <del>৳ {{ $value->old_price }}</del>
+                                            @endif
+
+                                            ৳ {{ $value->new_price }}
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                           @if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
+                                <div class="pro_btn">
+
+                                    <div class="cart_btn order_button">
+                                        <a href="{{ route('product', $value->slug) }}"
+                                            class="addcartbutton">অর্ডার করুন </a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="pro_btn">
+                                    <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@endif
+@foreach ($homeproducts as $homecat)
+    @if ($homecat->products->count() > 0)
     <section class="homeproduct">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="sec_title">
                         <h3 class="section-title-header">
-                            <div class="timer_inner">
-                                <div class="">
-                                    <span class="section-title-name"> Hot Deal </span>
-                                </div>
-                                <a href="{{ route('hotdeals') }}" class="view_more_btn" style="float:left">View
-                                    All>></a>
-
-                                <!-- <div class="">
-                                <div class="offer_timer" id="simple_timer"></div>
-                            </div> -->
-                            </div>
+                            <span class="section-title-name">{{ $homecat->name }}</span>
+                            <a href="{{ route('category', $homecat->slug) }}" class="view_more_btn">View All>></a>
                         </h3>
                     </div>
                 </div>
                 <div class="col-sm-12">
-                    <div class="product_slider owl-carousel">
-                        @foreach ($hotdeal_top as $key => $value)
-                            <div class="product_item wist_item">
-                                <div class="product_item_inner">
-                                    @if ($value->old_price)
-                                        <div class="sale-badge">
-                                            <div class="sale-badge-inner">
-                                                <div class="sale-badge-box">
-                                                    <span class="sale-badge-text">
-                                                        <p>@php $discount=(((($value->old_price)-($value->new_price))*100) / ($value->old_price)) @endphp {{ number_format($discount, 0) }}%</p>
-                                                        ছাড়
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
-                                    <div class="pro_img">
-                                        <a href="{{ route('product', $value->slug) }}">
-                                            <img src="{{ asset($value->image ? $value->image->image : '') }}"
-                                                alt="{{ $value->name }}" />
-                                        </a>
-                                    </div>
-                                    <div class="pro_des">
-                                        <div class="pro_name">
-                                            <a
-                                                href="{{ route('product', $value->slug) }}">{{ Str::limit($value->name, 80) }}</a>
-                                        </div>
-                                        <div class="pro_price">
-                                            <p>
-                                                @if ($value->old_price)
-                                                    <del>৳ {{ $value->old_price }}</del>
-                                                @endif
-
-                                                ৳ {{ $value->new_price }}
-
-                                            </p>
+                    <div class="product_sliders">
+                        @foreach ($homecat->products as $key => $value)
+                           <div class="product_item wist_item">
+                            <div class="product_item_inner">
+                                @if($value->old_price)
+                                <div class="sale-badge">
+                                    <div class="sale-badge-inner">
+                                        <div class="sale-badge-box">
+                                            <span class="sale-badge-text">
+                                                <p>@php $discount=(((($value->old_price)-($value->new_price))*100) / ($value->old_price)) @endphp {{ number_format($discount, 0) }}%</p>
+                                                ছাড়
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-
-                                @if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
-                                    <div class="pro_btn">
-
-                                        <div class="cart_btn order_button">
-                                            <a href="{{ route('product', $value->slug) }}" class="addcartbutton">অর্ডার
-                                                করুন </a>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="pro_btn">
-                                        <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার
-                                            করুন</button>
-                                    </div>
                                 @endif
+                                <div class="pro_img">
+                                    <a href="{{ route('product', $value->slug) }}">
+                                        <img src="{{ asset($value->image ? $value->image->image : '') }}"
+                                            alt="{{ $value->name }}" />
+                                    </a>
+                                </div>
+                                <div class="pro_des">
+                                    <div class="pro_name">
+                                        <a
+                                            href="{{ route('product', $value->slug) }}">{{ Str::limit($value->name, 80) }}</a>
+                                    </div>
+                                    <div class="pro_price">
+                                        <p>
+                                            @if ($value->old_price)
+                                             <del>৳ {{ $value->old_price }}</del>
+                                            @endif
+
+                                            ৳ {{ $value->new_price }}
+
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
+
+                            @if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
+                                <div class="pro_btn">
+
+                                    <div class="cart_btn order_button">
+                                        <a href="{{ route('product', $value->slug) }}"
+                                            class="addcartbutton">অর্ডার করুন </a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="pro_btn">
+                                <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
+                                </div>
+                            @endif
+                            <div class="product-overflow-quantity">
+                                <a class="details-link" href="#"> </a>
+                                <div class="product-added-price">
+                                    <h4 class="added-price">৳ <span>12</span></h4>
+                                </div>
+                                <div class="cart-items-number product-after-add-cart d-flex flex-coloumn"> </div>
+                                <div class="hover-quantity-area">
+                                    <div class="qty d-flex justify-content-between align-items-center">
+                                        <button type="button" class="minus cart_decrement" data-id="{{ $value->rowId }}"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></button>
+                                        <input type="text" name="qty" class="qty form-control" value="1">
+                                        <button type="button" class="plus cart_increment" data-id="{{ $value->rowId }}"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></button>
+                                    </div>
+                                </div>
+                                <p class="text-white text-center pt-3 mb-0 hover-quantity-area-textcart">in cart</p>
+                            </div>
+                            <button class="cart-badge add-to-cart-button" data-id="{{ $value->id }}">
+                                <div class="cart-badge-inner">
+                                    <div class="cart-badge-box">
+                                        <span class="cart-badge-text">
+                                            <p class="text-white">+</p>
+                                        </span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
-@endif
-@foreach ($homeproducts as $homecat)
-    @if ($homecat->products->count() > 0)
-        <section class="homeproduct">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="sec_title">
-                            <h3 class="section-title-header">
-                                <span class="section-title-name">{{ $homecat->name }}</span>
-                                <a href="{{ route('category', $homecat->slug) }}" class="view_more_btn">View All>></a>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="product_sliders">
-                            @foreach ($homecat->products as $key => $value)
-                                <div class="product_item wist_item">
-                                    <div class="product_item_inner">
-                                        @if ($value->old_price)
-                                            <div class="sale-badge">
-                                                <div class="sale-badge-inner">
-                                                    <div class="sale-badge-box">
-                                                        <span class="sale-badge-text">
-                                                            <p>@php $discount=(((($value->old_price)-($value->new_price))*100) / ($value->old_price)) @endphp {{ number_format($discount, 0) }}%</p>
-                                                            ছাড়
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
-                                        <div class="pro_img">
-                                            <a href="{{ route('product', $value->slug) }}">
-                                                <img src="{{ asset($value->image ? $value->image->image : '') }}"
-                                                    alt="{{ $value->name }}" />
-                                            </a>
-                                        </div>
-                                        <div class="pro_des">
-                                            <div class="pro_name">
-                                                <a
-                                                    href="{{ route('product', $value->slug) }}">{{ Str::limit($value->name, 80) }}</a>
-                                            </div>
-                                            <div class="pro_price">
-                                                <p>
-                                                    @if ($value->old_price)
-                                                        <del>৳ {{ $value->old_price }}</del>
-                                                    @endif
-
-                                                    ৳ {{ $value->new_price }}
-
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    @if (!$value->prosizes->isEmpty() || !$value->procolors->isEmpty())
-                                        <div class="pro_btn">
-
-                                            <div class="cart_btn order_button">
-                                                <a href="{{ route('product', $value->slug) }}"
-                                                    class="addcartbutton">অর্ডার করুন </a>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="pro_btn">
-                                            <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার
-                                                করুন</button>
-                                        </div>
-                                    @endif
-                                    <div class="product-overflow-quantity">
-                                        <a class="details-link" href="#"> </a>
-                                        <div class="product-added-price">
-                                            <h4 class="added-price">৳ <span>12</span></h4>
-                                        </div>
-                                        <div class="cart-items-number product-after-add-cart d-flex flex-coloumn">
-                                        </div>
-                                        <div class="hover-quantity-area">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <button type="button" class="minus-quantity"><svg
-                                                        stroke="currentColor" fill="currentColor" stroke-width="0"
-                                                        viewBox="0 0 1024 1024" height="1em" width="1em"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z">
-                                                        </path>
-                                                        <path
-                                                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z">
-                                                        </path>
-                                                    </svg></button>
-                                                <input type="text" name="quantity" readonly=""
-                                                    class="qty form-control" value="">
-                                                <button type="button" class="plus-quantity"><svg
-                                                        stroke="currentColor" fill="currentColor" stroke-width="0"
-                                                        viewBox="0 0 1024 1024" height="1em" width="1em"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z">
-                                                        </path>
-                                                        <path
-                                                            d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z">
-                                                        </path>
-                                                    </svg></button>
-                                            </div>
-                                        </div>
-                                        <p class="text-white text-center pt-3 mb-0 hover-quantity-area-textcart">in
-                                            cart</p>
-                                    </div>
-                                    <button class="toggle-btn">Active</button>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
     @endif
 @endforeach
 
@@ -316,12 +298,12 @@
             <div class="col-sm-12">
                 <div class="sec_title">
                     <h3 class="section-title-header">
-                        <span class="section-title-name"> Brands </span>
+                        <span class="section-title-name"> Top Brands </span>
 
                     </h3>
                 </div>
             </div>
-            @foreach ($brands as $item)
+            @foreach($brands as $item)
             <div class="col-6 col-sm-4 col-lg-2">
                 {{-- <a href="" title="{{$item->name}}" style="transition: all 0.5s ease-in-out;box-shadow: 0 0 12px rgb(0 0 0 / 42%);" href="" class="cat-block"> --}}
                 <figure class="border rounded d-flex align-items-center justify-content-center" style="border: 1px solid #c5c5c5; height: 140px;">
@@ -330,8 +312,8 @@
                             <img style="padding: 10px; max-width: 80%; max-height: 100%;"
                                 src="{{ asset($item->image) }}" />
                         </span>
-                    </a>
-                </figure>
+                    </figure>
+                </a>
             </div>
             @endforeach
         </div>
@@ -347,23 +329,41 @@
 
 <script>
     $(document).ready(function() {
-        $('.toggle-btn').each(function() {
-            $(this).click(function() {
-                const $status = $(this).siblings(
-                '.product-overflow-quantity'); // Get the sibling status div
-
-                // Toggle the active class
-                $status.toggleClass('active');
-
-                // show hide
-                if ($status.hasClass('active')) {
-                    $(this).hide();
-                } else {
-                    $(this).show();
-                }
-            });
+        $(".minus").click(function() {
+            var $input = $(this).parent().find("input");
+            var count = parseInt($input.val()) - 1;
+            count = count < 1 ? 1 : count;
+            $input.val(count);
+            $input.change();
+            return false;
+        });
+        $(".plus").click(function() {
+            var $input = $(this).parent().find("input");
+            $input.val(parseInt($input.val()) + 1);
+            $input.change();
+            return false;
         });
     });
+</script>
+
+<script>
+$(document).ready(function() {
+    $('.cart-badge').each(function() {
+        $(this).click(function() {
+            const $status = $(this).siblings('.product-overflow-quantity'); // Get the sibling status div
+
+            // Toggle the active class
+            $status.toggleClass('active');
+
+            // show hide
+            if ($status.hasClass('active')) {
+                $(this).hide();
+            }else{
+                $(this).show();
+            }
+        });
+    });
+});
 </script>
 
 <script>

@@ -2888,21 +2888,22 @@ section.product-inner {
     font-family: "Lato", sans-serif;
 }
 
-.product_item_inner .cart-badge {
+.cart-badge {
     position: absolute;
     top: 160px;
-    right: -7px;
+    right: 0px;
     z-index: 1;
+    background: none;
 }
 
-.product_item_inner .cart-badge-inner {
-    --cart-badge-width: 45px;
+.cart-badge-inner {
+    --cart-badge-width: 35px;
     width: var(--cart-badge-width);
     height: var(--cart-badge-width);
 }
 
-.product_item_inner .cart-badge-box {
-    background-color: #ed145b;
+.cart-badge-box {
+    background-color: #9c9c9c;
     border-radius: 50%;
     height: 100%;
     width: 100%;
@@ -2911,7 +2912,7 @@ section.product-inner {
     align-items: center;
 }
 
-.product_item_inner span.cart-badge-text {
+span.cart-badge-text {
     color: #fff;
     font-size: 30px;
     font-weight: 600;
@@ -4432,7 +4433,7 @@ i.fa-solid.fa-angle-right:hover {
     transform: translate(-50%, -50%);
     z-index: 100;
 }
-.product-overflow-quantity .minus-quantity {
+.product-overflow-quantity .minus {
     border: 0;
     background: transparent;
     color: #fef3d5;
@@ -4448,7 +4449,7 @@ i.fa-solid.fa-angle-right:hover {
     font-weight: 400;
     text-align: center;
 }
-.product-overflow-quantity .plus-quantity {
+.product-overflow-quantity .plus {
     border: 0;
     background: transparent;
     color: #fef3d5;
@@ -4459,4 +4460,19 @@ i.fa-solid.fa-angle-right:hover {
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.qty {
+    overflow: hidden;
+    width: 130px;
+}
+
+.qty input {
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    font-weight: 500;
 }
