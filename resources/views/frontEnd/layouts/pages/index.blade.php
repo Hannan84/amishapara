@@ -316,14 +316,14 @@
             <div class="col-sm-12">
                 <div class="sec_title">
                     <h3 class="section-title-header">
-                        <span class="section-title-name"> Brand </span>
+                        <span class="section-title-name"> Brands </span>
 
                     </h3>
                 </div>
             </div>
             @foreach ($brands as $item)
             <div class="col-6 col-sm-4 col-lg-2">
-                {{-- <a href="{{ url('brands/' . $item->slug) }}" title="{{$item->name}}" style="transition: all 0.5s ease-in-out;box-shadow: 0 0 12px rgb(0 0 0 / 42%);" href="" class="cat-block"> --}}
+                {{-- <a href="" title="{{$item->name}}" style="transition: all 0.5s ease-in-out;box-shadow: 0 0 12px rgb(0 0 0 / 42%);" href="" class="cat-block"> --}}
                 <figure class="border rounded d-flex align-items-center justify-content-center" style="border: 1px solid #c5c5c5; height: 140px;">
                     <a href="{{ url('brands/' . $item->slug) }}" title="{{ $item->name }}" href="" class="cat-block">
                         <span class="d-flex align-items-center justify-content-center">
