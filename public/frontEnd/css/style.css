@@ -2449,7 +2449,8 @@ li.recent_pro {
 }
 
 .order_place:hover {
-    background: #fe5200;
+    background: #9be2a8;
+    color: black
 }
 
 /*====  CHECKOUT CSS END ====  */
