@@ -4345,10 +4345,118 @@ td.tfoot_bg {
     padding: 4px 20px;
 }
 
+.product-overflow-quantity {
+    height: 0%;
+    width: 0%;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    visibility: hidden;
+    opacity: 0;
+}
+
+.show {
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
 i.fa-solid.fa-angle-left:hover {
     color: #06841d !important;
 }
 
 i.fa-solid.fa-angle-right:hover {
     color: #06841d !important;
+}
+
+/*strat show cart opacity */
+
+.product-overflow-quantity {
+    height: 0%;
+    width: 0%;
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    visibility: hidden;
+    opacity: 0;
+}
+.product-overflow-quantity.active {
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+.popular-product-area a.details-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+.product-added-price {
+    display: flex;
+    align-items: center;
+    margin: auto;
+    position: relative;
+    top: 40px;
+}
+.product-added-price h4 {
+    color: #fff;
+    font-size: 16px;
+    font-family: Poppins, sans-serif !important;
+}
+.product-overflow-quantity .cart-items-number {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.375rem;
+    margin-top: 35px;
+    align-items: center;
+}
+.product-overflow-quantity .hover-quantity-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+.product-overflow-quantity .minus-quantity {
+    border: 0;
+    background: transparent;
+    color: #fef3d5;
+    padding: 30px 15px;
+}
+.list-card-image .product-overflow-quantity .qty {
+    border: 0;
+    background: transparent;
+    font-size: 35px;
+    padding: 0.2rem 0.5rem 0;
+    width: 75px;
+    color: #fdd670;
+    font-weight: 400;
+    text-align: center;
+}
+.product-overflow-quantity .plus-quantity {
+    border: 0;
+    background: transparent;
+    color: #fef3d5;
+    padding: 30px 15px;
+}
+.hover-quantity-area-textcart {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -207,19 +207,19 @@
                                                                 </div>
                                                             </div>
                                                             <div class="d-flex single_product col-sm-12">
-                                                                <input type="submit" class="btn px-4 add_cart_btn"
+                                                                <!-- <input type="submit" class="btn px-4 add_cart_btn"
                                                                     onclick="return sendSuccess();" name="add_cart"
-                                                                    value="কার্টে যোগ করুন " />
-
-                                                                <input type="submit"
+                                                                    value="কার্টে যোগ করুন " /> -->
+                                                                    <button class="add-to-cart-button" data-id="{{ $details->id }}">অর্ডার করুন</button>
+                                                                <!-- <input type="submit"
                                                                     class="btn px-4 order_now_btn order_now_btn_m"
                                                                     onclick="return sendSuccess();" name="order_now"
-                                                                    value="অর্ডার করুন" />
+                                                                    value="অর্ডার করুন" /> -->
                                                             </div>
                                                         </div>
                                                         <div class="mt-md-2 mt-2">
                                                             <h4 class="font-weight-bold">
-                                                                <a class="btn btn-success w-100 call_now_btn"
+                                                                <a class="btn btn-success w-50 call_now_btn"
                                                                     href="tel: {{ $contact->hotline }}">
                                                                     <i class="fa fa-phone-square"></i>
                                                                     {{ $contact->hotline }}
@@ -476,13 +476,7 @@
                                 </div>
                             @else
                                 <div class="pro_btn">
-                                  
-                                    <form action="{{ route('cart.store') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{ $value->id }}" />
-                                        <input type="hidden" name="qty" value="1" />
-                                        <button type="submit">অর্ডার</button>
-                                    </form>
+                                <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার</button>
                                 </div>
                             @endif
                         </div>
