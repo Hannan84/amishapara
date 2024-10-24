@@ -2450,7 +2450,7 @@ li.recent_pro {
 
 .order_place:hover {
     background: #9be2a8;
-    color: black
+    color: black;
 }
 
 /*====  CHECKOUT CSS END ====  */
@@ -2860,7 +2860,7 @@ section.product-inner {
 
 .product_item_inner .sale-badge {
     position: absolute;
-    top: 15px;
+    /* top: 15px; */
     right: 4px;
     z-index: 1;
 }
@@ -4475,4 +4475,10 @@ i.fa-solid.fa-angle-right:hover {
     width: 100%;
     pointer-events: none;
     font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .chackout_row {
+        flex-direction: column-reverse;
+    }
 }

@@ -50,9 +50,9 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if($request->keyword){
-            $data = Product::orderBy('id','DESC')->where('name', 'LIKE', '%' . $request->keyword . "%")->with('image','category')->paginate(50);
+            $data = Product::orderBy('id','ASC')->where('name', 'LIKE', '%' . $request->keyword . "%")->with('image','category')->paginate(100);
         }else{
-            $data = Product::orderBy('id','DESC')->with('image','category')->paginate(50);
+            $data = Product::orderBy('id','ASC')->with('image','category')->paginate(100);
         }
         return view('backEnd.product.index',compact('data'));
     }

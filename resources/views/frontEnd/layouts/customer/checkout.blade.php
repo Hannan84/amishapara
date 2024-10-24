@@ -9,7 +9,7 @@
         $shipping = Session::get('shipping') ? Session::get('shipping') : 0;
     @endphp
     <div class="container">
-        <div class="row">
+        <div class="row chackout_row">
             <div class="col-sm-5 cus-order-2">
                 <div class="checkout-shipping">
                     <form action="{{ route('customer.ordersave') }}" method="POST" data-parsley-validate="">

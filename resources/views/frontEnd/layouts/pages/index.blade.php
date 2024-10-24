@@ -138,7 +138,7 @@
                                     <div class="sale-badge-inner">
                                         <div class="sale-badge-box">
                                             <span class="sale-badge-text">
-                                                <p>@php $discount=(((($value->old_price)-($value->new_price))*100) / ($value->old_price)) @endphp {{ number_format($discount, 0) }}%</p>
+                                                <p>@php $discount=((($value->old_price)-($value->new_price))) @endphp {{ number_format($discount, 0) }}৳</p>
                                                 ছাড়
                                             </span>
                                         </div>
@@ -213,7 +213,7 @@
                                     <div class="sale-badge-inner">
                                         <div class="sale-badge-box">
                                             <span class="sale-badge-text">
-                                                <p>@php $discount=(((($value->old_price)-($value->new_price))*100) / ($value->old_price)) @endphp {{ number_format($discount, 0) }}%</p>
+                                                <p>@php $discount=((($value->old_price)-($value->new_price))) @endphp {{ number_format($discount, 0) }}৳</p>
                                                 ছাড়
                                             </span>
                                         </div>
@@ -263,6 +263,7 @@
                                     <h4 class="added-price">৳ <span>12</span></h4>
                                 </div>
                                 <div class="cart-items-number product-after-add-cart d-flex flex-coloumn"> </div>
+                                
                                 <div class="hover-quantity-area">
                                     <div class="qty d-flex justify-content-between align-items-center">
                                         <button type="button" class="minus cart_decrement_by_id" data-id="{{ $value->id }}"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M696 480H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h368c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"></path><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path></svg></button>
@@ -271,6 +272,7 @@
                                     </div>
                                 </div>
                                 <p class="text-white text-center pt-3 mb-0 hover-quantity-area-textcart">in cart</p>
+                                
                             </div>
                             <button class="cart-badge add-to-cart-button" data-id="{{ $value->id }}">
                                 <div class="cart-badge-inner">
