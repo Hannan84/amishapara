@@ -103,7 +103,18 @@
                     @endforeach
                 </div>
             </div>
-
+            @if ($sliders_2)
+            <div class="col-sm-12 mt-2">
+                <div class="home-slider-container">
+                    <div class="another_slider">
+                        <div class="slider-item">
+                            <img style="border-radius: 13px;" src="{{ asset($sliders_2->image) }}" alt="" />
+                        </div>
+                        <!-- slider item -->
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </section>
@@ -129,7 +140,7 @@
                 </div>
             </div>
             <div class="col-sm-12">
-                <div class="product_slider owl-carousel">
+                <div class="product_sliders">
                     @foreach ($hotdeal_top as $key => $value)
                         <div class="product_item wist_item">
                             <div class="product_item_inner">
@@ -186,6 +197,18 @@
                     @endforeach
                 </div>
             </div>
+            @if ($sliders_3)
+            <div class="col-sm-12">
+                <div class="home-slider-container">
+                    <div class="another_slider">
+                        <div class="slider-item">
+                            <img style="border-radius: 13px;" src="{{ asset($sliders_3->image) }}" alt="" />
+                        </div>
+                        <!-- slider item -->
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </section>
@@ -287,6 +310,78 @@
                         @endforeach
                     </div>
                 </div>
+                @if ($loop->first && $sliders_3)
+                <div class="col-sm-12 mt-2">
+                    <div class="home-slider-container">
+                        <div class="another_slider">
+                            <div class="slider-item">
+                                <img style="border-radius: 13px;" src="{{ asset($sliders_3->image) }}" alt="" />
+                            </div>
+                            <!-- slider item -->
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @if ($loop->iteration === 2 && $sliders_4)
+                <div class="col-sm-12 mt-2">
+                    <div class="home-slider-container">
+                        <div class="another_slider">
+                            <div class="slider-item">
+                                <img style="border-radius: 13px;" src="{{ asset($sliders_4->image) }}" alt="" />
+                            </div>
+                            <!-- slider item -->
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @if ($loop->iteration === 3 && $sliders_5)
+                <div class="col-sm-12 mt-2">
+                    <div class="home-slider-container">
+                        <div class="another_slider">
+                            <div class="slider-item">
+                                <img style="border-radius: 13px;" src="{{ asset($sliders_5->image) }}" alt="" />
+                            </div>
+                            <!-- slider item -->
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @if ($loop->iteration === 4 && $sliders_6)
+                <div class="col-sm-12 mt-2">
+                    <div class="home-slider-container">
+                        <div class="another_slider">
+                            <div class="slider-item">
+                                <img style="border-radius: 13px;" src="{{ asset($sliders_6->image) }}" alt="" />
+                            </div>
+                            <!-- slider item -->
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @if ($loop->iteration === 5 && $sliders_7)
+                <div class="col-sm-12 mt-2">
+                    <div class="home-slider-container">
+                        <div class="another_slider">
+                            <div class="slider-item">
+                                <img style="border-radius: 13px;" src="{{ asset($sliders_7->image) }}" alt="" />
+                            </div>
+                            <!-- slider item -->
+                        </div>
+                    </div>
+                </div>
+                @endif
+                @if ($loop->iteration === 6 && $sliders_8)
+                <div class="col-sm-12 mt-2">
+                    <div class="home-slider-container">
+                        <div class="another_slider">
+                            <div class="slider-item">
+                                <img style="border-radius: 13px;" src="{{ asset($sliders_8->image) }}" alt="" />
+                            </div>
+                            <!-- slider item -->
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </section>
