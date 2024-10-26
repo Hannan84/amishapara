@@ -40,16 +40,27 @@ class FrontendController extends Controller
         $sliders = Banner::where(['status' => 1, 'category_id' => 1])
             ->select('id', 'image', 'link')
             ->get();
-
-        $sliderbottomads = Banner::where(['status' => 1, 'category_id' => 5])
+        $sliders_2 = Banner::where(['status' => 1, 'category_id' => 5])
             ->select('id', 'image', 'link')
-            ->limit(3)
-            ->get();
-
-        $footertopads = Banner::where(['status' => 1, 'category_id' => 6])
+            ->first();
+        $sliders_3 = Banner::where(['status' => 1, 'category_id' => 6])
             ->select('id', 'image', 'link')
-            ->limit(2)
-            ->get();
+            ->first();
+        $sliders_4 = Banner::where(['status' => 1, 'category_id' => 7])
+            ->select('id', 'image', 'link')
+            ->first();
+        $sliders_5 = Banner::where(['status' => 1, 'category_id' => 8])
+            ->select('id', 'image', 'link')
+            ->first();
+        $sliders_6 = Banner::where(['status' => 1, 'category_id' => 9])
+            ->select('id', 'image', 'link')
+            ->first();
+        $sliders_7 = Banner::where(['status' => 1, 'category_id' => 10])
+            ->select('id', 'image', 'link')
+            ->first();
+        $sliders_8 = Banner::where(['status' => 1, 'category_id' => 11])
+            ->select('id', 'image', 'link')
+            ->first();
 
         $hotdeal_top = Product::where(['status' => 1, 'topsale' => 1])
             ->orderBy('id', 'ASC')
@@ -74,7 +85,7 @@ class FrontendController extends Controller
                 return $query;
             });
         // return $homeproducts;
-        return view('frontEnd.layouts.pages.index', compact('sliders', 'frontcategory', 'brands', 'hotdeal_top', 'hotdeal_bottom', 'homeproducts', 'sliderbottomads', 'footertopads'));
+        return view('frontEnd.layouts.pages.index', compact('sliders','sliders_2','sliders_3','sliders_4','sliders_5','sliders_6','sliders_7','sliders_8', 'frontcategory', 'brands', 'hotdeal_top', 'hotdeal_bottom', 'homeproducts'));
     }
 
     public function hotdeals()
