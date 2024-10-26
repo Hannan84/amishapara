@@ -16,7 +16,7 @@ use App\Models\Color;
 use App\Models\Size;
 use Toastr;
 use File;
-use Str;
+use Illuminate\Support\Str;
 use Image;
 use DB;
 
@@ -72,14 +72,13 @@ class ProductController extends Controller
             'new_price' => 'required',
             'purchase_price' => 'required',
             'stock' => 'required',
-            'category_id' => 'required',
             'description' => 'required',
         ]);
         $last_id = Product::orderBy('id', 'desc')->select('id')->first();
         $last_id = $last_id?$last_id->id+1:1;
         $input = $request->except(['image','files','proSize','proColor']);
 
-        $input['slug'] = strtolower(preg_replace('/[\/\s]+/', '-', $request->name.'-'.$last_id));
+        $input['slug'] = Str::of($request->name)->slug('-');
 
         $input['status'] = $request->status?1:0;
         $input['topsale'] = $request->topsale?1:0;
@@ -166,7 +165,7 @@ class ProductController extends Controller
         $update_data = Product::find($request->id);
         $input = $request->except(['image','files','proSize','proColor']);
         $last_id = Product::orderBy('id', 'desc')->select('id')->first();
-        $input['slug'] = strtolower(preg_replace('/[\/\s]+/', '-', $request->name.'-'.$last_id->id));
+        $input['slug'] = Str::of($request->name)->slug('-');
         $input['status'] = $request->status?1:0;
         $input['topsale'] = $request->topsale?1:0;
         $input['feature_product'] = $request->feature_product?1:0;

@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Subcategory;
 use File;
 use DB;
+use Illuminate\Support\Str;
 
 class SubcategoryController extends Controller
 {
@@ -69,8 +70,7 @@ class SubcategoryController extends Controller
       
         $input = $request->all();
 
-        $input['slug'] = strtolower(preg_replace('/\s+/', '-', $request->subcategoryName));
-        $input['slug'] = str_replace('/', '', $input['slug']);
+        $input['slug'] = Str::slug($request->subcategoryName);
 
         $input['image'] = $imageUrl;
         Subcategory::create($input);
@@ -119,9 +119,7 @@ class SubcategoryController extends Controller
         }
 
 
-        
-        $input['slug'] = strtolower(preg_replace('/\s+/', '-', $request->subcategoryName));
-        $input['slug'] = str_replace('/', '', $input['slug']);
+        $input['slug'] = Str::slug($request->subcategoryName);
         $input['status'] = $request->status?1:0;
         
         $update_data->update($input);

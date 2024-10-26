@@ -58,8 +58,7 @@ class CategoryController extends Controller
         }
 
         $input = $request->all();
-        $input['slug'] = strtolower(preg_replace('/\s+/', '-', $request->name));
-        $input['slug'] = str_replace('/', '', $input['slug']);
+        $input['slug'] = Str::slug($request->name);
 
         $input['parent_id'] = $request->parent_id?$request->parent_id:0;
         $input['featured'] = $request->featured ? 1 : 0;
@@ -106,8 +105,8 @@ class CategoryController extends Controller
         }else{
             $input['image'] = $update_data->image;
         }
-        $input['slug'] = strtolower(preg_replace('/\s+/', '-', $request->name));
-        $input['slug'] = str_replace('/', '', $input['slug']);
+
+        $input['slug'] = Str::slug($request->name);
 
         $input['parent_id'] = $request->parent_id?$request->parent_id:0;
         $input['featured'] = $request->featured ? 1 : 0;
