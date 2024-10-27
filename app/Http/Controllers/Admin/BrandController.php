@@ -8,6 +8,7 @@ use App\Models\Brand;
 use Image;
 use File;
 use Toastr;
+use Illuminate\Support\Str;
 class BrandController extends Controller
 {
     
@@ -49,7 +50,7 @@ class BrandController extends Controller
        
 
         $input = $request->all();
-        $input['slug'] = strtolower(preg_replace('/\s+/u', '-', trim($request->name)));
+        $input['slug'] = Str::slug($request->name);
         $input['image'] = $imageUrl;
         Brand::create($input);
         Toastr::success('Success','Data insert successfully');
@@ -92,6 +93,7 @@ class BrandController extends Controller
             $input['image'] = $update_data->image;
         }
         $input['status'] = $request->status?1:0;
+        $input['slug'] = Str::slug($request->name);
         $update_data->update($input);
 
         Toastr::success('Success','Data update successfully');

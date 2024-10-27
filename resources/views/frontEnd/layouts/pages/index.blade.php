@@ -283,7 +283,7 @@
                             <div class="product-overflow-quantity">
                                 <a class="details-link" href="#"> </a>
                                 <div class="product-added-price">
-                                    <h4 class="added-price">৳ <span>12</span></h4>
+                                    <h4 class="added-price">৳ <span class="add_price">{{ $value->new_price }}</span></h4>
                                 </div>
                                 <div class="cart-items-number product-after-add-cart d-flex flex-coloumn"> </div>
                                 

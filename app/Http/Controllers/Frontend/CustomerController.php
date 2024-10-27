@@ -305,10 +305,10 @@ class CustomerController extends Controller
             if($exits_customer){
                 $customer_id = $exits_customer->id;
             }else{
-            $password = rand(111111,999999);
+            $password = $request->phone;
             $store              = new Customer();
             $store->name        = $request->name;
-            $store->slug        = $request->name;
+            $store->slug        = strtolower(Str::slug($request->name));
             $store->phone       = $request->phone;
             $store->password    = bcrypt($password);
             $store->verify      = 1;

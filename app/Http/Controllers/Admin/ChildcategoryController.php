@@ -50,8 +50,7 @@ class ChildcategoryController extends Controller
         
         $input = $request->all();
 
-        $input['slug'] = strtolower(preg_replace('/\s+/', '-', $request->childcategoryName));
-        $input['slug'] = str_replace('/', '', $input['slug']);
+        $input['slug'] = Str::slug($request->childcategoryName);
         
         Childcategory::create($input);
         Toastr::success('Success','Data insert successfully');
@@ -76,8 +75,7 @@ class ChildcategoryController extends Controller
         $input = $request->all();
         
        
-        $input['slug'] = strtolower(preg_replace('/\s+/', '-', $request->childcategoryName));
-        $input['slug'] = str_replace('/', '', $input['slug']);
+        $input['slug'] = Str::slug($request->childcategoryName);
         $input['status'] = $request->status?1:0;
         
         $update_data->update($input);
