@@ -278,9 +278,9 @@ class FrontendController extends Controller
     }
 
 
-    public function details($slug)
+    public function details(Request $request)
     {
-        $details = Product::where(['slug' => $slug, 'status' => 1])
+        $details = Product::where(['slug' => $request->slug, 'status' => 1])
             ->with('image', 'images', 'category', 'subcategory', 'childcategory')
             ->firstOrFail();
         $products = Product::where(['category_id' => $details->category_id, 'status' => 1])
