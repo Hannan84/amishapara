@@ -427,14 +427,16 @@
 <script>
     $(document).ready(function() {
         $(".minus").click(function() {
+            const cartId = $(this).data("id");
             var $input = $(this).parent().find("input");
             var count = parseInt($input.val()) - 1;
-            // count = count < 1 ? 1 : count;
+            count = count < 1 ? 1 : count;
             $input.val(count);
             $input.change();
             const $status = $('.product-overflow-quantity');
-            if (count < 1) {
+            if (count == 1) {
                 $status.removeClass('active');
+                localStorage.removeItem(`activeStatus-${cartId}`);
                 $('.cart-badge').show();
             } 
             return false;
@@ -450,8 +452,6 @@
 
 <script>
     $(document).ready(function() {
-        // localStorage.removeItem(`activeStatus-152`);
-        // Check localStorage and apply the highlight class to relevant carts
         $('.product_item').each(function() {
             const cartId = $(this).attr('id');
             if (localStorage.getItem(`activeStatus-${cartId}`) === 'true') {
@@ -459,17 +459,14 @@
             }
         });
 
-        // // Handle click event for cart badges
         $('.cart-badge').click(function() {
-            // console.log(localStorage);
-            const $parentCart = $(this).parent(); // Get the parent .cart
+            const $parentCart = $(this).parent();
             const cartId = $parentCart.attr('id');
 
-            // Toggle the highlight class
             $parentCart.children('.product-overflow-quantity').toggleClass('active');
 
-            // Store the state in localStorage
             if ($parentCart.children('.product-overflow-quantity').hasClass('active')) {
+                $(this).hide();
                 localStorage.setItem(`activeStatus-${cartId}`, 'true');
             } else {
                 localStorage.removeItem(`activeStatus-${cartId}`);
