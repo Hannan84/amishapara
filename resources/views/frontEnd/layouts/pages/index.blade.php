@@ -229,7 +229,7 @@
                 <div class="col-sm-12">
                     <div class="product_sliders">
                         @foreach ($homecat->products as $key => $value)
-                           <div class="product_item wist_item">
+                           <div class="product_item wist_item" id="{{ $value->id }}">
                             <div class="product_item_inner">
                                 @if($value->old_price)
                                 <div class="sale-badge">
@@ -427,14 +427,16 @@
 <script>
     $(document).ready(function() {
         $(".minus").click(function() {
+            const cartId = $(this).data("id");
             var $input = $(this).parent().find("input");
             var count = parseInt($input.val()) - 1;
-            // count = count < 1 ? 1 : count;
+            count = count < 1 ? 1 : count;
             $input.val(count);
             $input.change();
             const $status = $('.product-overflow-quantity');
-            if (count < 1) {
+            if (count == 1) {
                 $status.removeClass('active');
+                localStorage.removeItem(`activeStatus-${cartId}`);
                 $('.cart-badge').show();
             } 
             return false;
@@ -449,23 +451,28 @@
 </script>
 
 <script>
-$(document).ready(function() {
-    $('.cart-badge').each(function() {
-        $(this).click(function() {
-            const $status = $(this).siblings('.product-overflow-quantity'); // Get the sibling status div
+    $(document).ready(function() {
+        $('.product_item').each(function() {
+            const cartId = $(this).attr('id');
+            if (localStorage.getItem(`activeStatus-${cartId}`) === 'true') {
+                $(this).children('.product-overflow-quantity').addClass('active');
+            }
+        });
 
-            // Toggle the active class
-            $status.toggleClass('active');
+        $('.cart-badge').click(function() {
+            const $parentCart = $(this).parent();
+            const cartId = $parentCart.attr('id');
 
-            // show hide
-            if ($status.hasClass('active')) {
+            $parentCart.children('.product-overflow-quantity').toggleClass('active');
+
+            if ($parentCart.children('.product-overflow-quantity').hasClass('active')) {
                 $(this).hide();
-            }else{
-                $(this).show();
+                localStorage.setItem(`activeStatus-${cartId}`, 'true');
+            } else {
+                localStorage.removeItem(`activeStatus-${cartId}`);
             }
         });
     });
-});
 </script>
 
 <script>
