@@ -310,19 +310,7 @@
                         @endforeach
                     </div>
                 </div>
-                @if ($loop->first && $sliders_3)
-                <div class="col-sm-12 mt-2">
-                    <div class="home-slider-container">
-                        <div class="another_slider">
-                            <div class="slider-item">
-                                <img style="border-radius: 13px;" src="{{ asset($sliders_3->image) }}" alt="" />
-                            </div>
-                            <!-- slider item -->
-                        </div>
-                    </div>
-                </div>
-                @endif
-                @if ($loop->iteration === 2 && $sliders_4)
+                @if ($loop->first && $sliders_4)
                 <div class="col-sm-12 mt-2">
                     <div class="home-slider-container">
                         <div class="another_slider">
@@ -334,7 +322,7 @@
                     </div>
                 </div>
                 @endif
-                @if ($loop->iteration === 3 && $sliders_5)
+                @if ($loop->iteration === 2 && $sliders_5)
                 <div class="col-sm-12 mt-2">
                     <div class="home-slider-container">
                         <div class="another_slider">
@@ -346,7 +334,7 @@
                     </div>
                 </div>
                 @endif
-                @if ($loop->iteration === 4 && $sliders_6)
+                @if ($loop->iteration === 3 && $sliders_6)
                 <div class="col-sm-12 mt-2">
                     <div class="home-slider-container">
                         <div class="another_slider">
@@ -358,7 +346,7 @@
                     </div>
                 </div>
                 @endif
-                @if ($loop->iteration === 5 && $sliders_7)
+                @if ($loop->iteration === 4 && $sliders_7)
                 <div class="col-sm-12 mt-2">
                     <div class="home-slider-container">
                         <div class="another_slider">
@@ -370,7 +358,7 @@
                     </div>
                 </div>
                 @endif
-                @if ($loop->iteration === 6 && $sliders_8)
+                @if ($loop->iteration === 5 && $sliders_8)
                 <div class="col-sm-12 mt-2">
                     <div class="home-slider-container">
                         <div class="another_slider">
@@ -433,7 +421,7 @@
             count = count < 1 ? 1 : count;
             $input.val(count);
             $input.change();
-            const $status = $('.product-overflow-quantity');
+            const $status = $(this).closest('.product-overflow-quantity');
             if (count == 1) {
                 $status.removeClass('active');
                 localStorage.removeItem(`activeStatus-${cartId}`);
