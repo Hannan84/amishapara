@@ -425,7 +425,7 @@
             if (count == 1) {
                 $status.removeClass('active');
                 localStorage.removeItem(`activeStatus-${cartId}`);
-                $('.cart-badge').show();
+                $status.siblings('.cart-badge').show();
             } 
             return false;
         });
