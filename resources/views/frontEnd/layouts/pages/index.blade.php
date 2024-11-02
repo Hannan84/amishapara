@@ -444,6 +444,7 @@
             const cartId = $(this).attr('id');
             if (localStorage.getItem(`activeStatus-${cartId}`) === 'true') {
                 $(this).children('.product-overflow-quantity').addClass('active');
+                $(this).children('.product-overflow-quantity').siblings('.cart-badge').hide();
             }
         });
 
