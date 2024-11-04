@@ -108,8 +108,8 @@
 
             <div class="mobile-search">
                 <form action="{{route('search')}}">
-                    <input type="text" placeholder="Search Product ... " value="" class="msearch_keyword msearch_click" name="keyword" />
                     <button><i data-feather="search"></i></button>
+                    <input type="text" placeholder="Search Product ... " value="" class="msearch_keyword msearch_click" name="keyword" />
                 </form>
                 <div class="search_result"></div>
             </div>
@@ -124,17 +124,20 @@
                                 </div>
                                 <div class="main-search">
                                     <form action="{{route('search')}}">
-                                        <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
                                         <button>
                                             <i data-feather="search"></i>
                                         </button>
+                                        <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
                                     </form>
                                     <div class="search_result"></div>
                                 </div>
                                 <div class="header-list-items">
                                     <ul>
                                         <li class="track_btn">
-                                            <a href="{{route('customer.order_track')}}"> <i class="fa fa-truck"></i>Track</a>
+                                            <a href="{{ route('switchLang', 'en') }}">EN</a> / <a href="{{ route('switchLang', 'bn') }}">বাং</a>
+                                        </li>
+                                        <li class="track_btn">
+                                            <a href="{{route('customer.order_track')}}"> <i class="fa fa-truck"></i>{{ __('messages.track') }}</a>
                                         </li>
                                         @if(Auth::guard('customer')->user())
                                         <li class="for_order">
@@ -151,7 +154,7 @@
                                             <p>
                                                 <a href="{{route('customer.login')}}">
                                                     <i class="fa-regular fa-user"></i>
-                                                    Login
+                                                    {{ __('messages.login') }}
                                                 </a>
                                             </p>
                                         </li>
@@ -179,7 +182,7 @@
                                                     @endforeach
                                                 </ul>
                                                 <p><strong>সর্বমোট : ৳{{$subtotal}}</strong></p>
-                                                <a href="{{route('customer.checkout')}}" class="go_cart"> অর্ডার করুন </a>
+                                                <a href="{{route('customer.checkout')}}" class="go_cart">{{ __('messages.cartButton') }}</a>
                                             </div>
                                         </li>
                                     </ul>
@@ -360,7 +363,7 @@
 
           <li class="mobile_home">
               <a href="{{route('home')}}">
-                  <span><i class="fa-solid fa-home"></i></span> <span>Home</span>
+                  <span><i class="fa-solid fa-home"></i></span> <span>{{ __('messages.home') }}</span>
               </a>
           </li>
 
@@ -369,7 +372,7 @@
                   <span>
                       <i class="fa fa-truck"></i>
                   </span>
-                  <span>Track</span>
+                  <span>{{ __('messages.track') }}</span>
               </a>
           </li>
           @if(Auth::guard('customer')->user())
@@ -378,7 +381,7 @@
                   <span>
                       <i class="fa-solid fa-user"></i>
                   </span>
-                  <span>Account</span>
+                  <span>{{ __('messages.account') }}</span>
               </a>
           </li>
           @else
@@ -387,7 +390,7 @@
                   <span>
                       <i class="fa-solid fa-user"></i>
                   </span>
-                  <span>Login</span>
+                  <span>{{ __('messages.login') }}</span>
               </a>
           </li>
           @endif

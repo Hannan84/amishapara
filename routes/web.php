@@ -93,6 +93,8 @@ Route::group(['namespace'=>'Frontend', 'middleware' => ['ipcheck','check_refer']
 
     Route::get('cart/increment_id', [ShoppingController::class, 'cart_increment_by_id'])->name('cart.increment_by_id');
 
+    // lang
+    Route::get('lang/{lang}', [FrontEndController::class, 'switchLang'])->name('switchLang');
 });
 
 Route::group(['prefix'=>'customer','namespace'=>'Frontend', 'middleware' => ['ipcheck','check_refer']], function() {

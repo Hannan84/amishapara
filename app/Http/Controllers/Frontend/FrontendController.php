@@ -474,4 +474,13 @@ class FrontendController extends Controller
         return view('frontEnd.layouts.pages.offers');
     }
 
+    public function switchLang($lang)
+    {
+        if (in_array($lang, ['en', 'bn'])) {
+            session(['applocale' => $lang]);
+        }
+
+        return redirect()->back();
+    }
+
 }

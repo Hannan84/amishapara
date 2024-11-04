@@ -185,12 +185,12 @@
 
                                     <div class="cart_btn order_button">
                                         <a href="{{ route('product', $value->slug) }}"
-                                            class="addcartbutton">অর্ডার করুন </a>
+                                            class="addcartbutton">{{ __('messages.cartButton') }}</a>
                                     </div>
                                 </div>
                             @else
                                 <div class="pro_btn">
-                                    <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
+                                    <button class="add-to-cart-button" data-id="{{ $value->id }}">{{ __('messages.cartButton') }}</button>
                                 </div>
                             @endif
                         </div>
@@ -272,12 +272,12 @@
 
                                     <div class="cart_btn order_button">
                                         <a href="{{ route('product', $value->slug) }}"
-                                            class="addcartbutton">অর্ডার করুন </a>
+                                            class="addcartbutton">{{ __('messages.cartButton') }}</a>
                                     </div>
                                 </div>
                             @else
                                 <div class="pro_btn">
-                                <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
+                                <button class="add-to-cart-button" data-id="{{ $value->id }}">{{ __('messages.cartButton') }}</button>
                                 </div>
                             @endif
                             <div class="product-overflow-quantity">
