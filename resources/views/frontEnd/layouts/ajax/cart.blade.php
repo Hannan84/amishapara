@@ -8,10 +8,10 @@
 <table class="cart_table table table-bordered table-striped text-center mb-0">
         <thead>
          <tr>
-          <th style="width: 20%;">ডিলিট</th>
-          <th style="width: 40%;">প্রোডাক্ট</th>
-          <th style="width: 20%;">পরিমাণ</th>
-          <th style="width: 20%;">মূল্য</th>
+            <th style="width: 20%;">{{ __('messages.delete') }}</th>
+            <th style="width: 40%;">{{ __('messages.product') }}</th>
+            <th style="width: 20%;">{{ __('messages.quentity') }}</th>
+            <th style="width: 20%;">{{ __('messages.price') }}</th>
          </tr>
         </thead>
 
@@ -45,19 +45,19 @@
         </tbody>
         <tfoot>
          <tr>
-          <th colspan="3" class="text-end px-4">মোট</th>
+          <th colspan="3" class="text-end px-4">{{ __('messages.subtotal') }}</th>
           <td>
            <span id="net_total"><span class="alinur">৳ </span><strong>{{$subtotal}}</strong></span>
           </td>
          </tr>
          <tr>
-          <th colspan="3" class="text-end px-4">ডেলিভারি চার্জ</th>
+          <th colspan="3" class="text-end px-4">{{ __('messages.delCharge') }}</th>
           <td>
            <span id="cart_shipping_cost"><span class="alinur">৳ </span><strong>{{$shipping}}</strong></span>
           </td>
          </tr>
          <tr>
-          <th colspan="3" class="text-end px-4">সর্বমোট</th>
+          <th colspan="3" class="text-end px-4">{{ __('messages.total') }}</th>
           <td>
            <span id="grand_total"><span class="alinur">৳ </span><strong>{{$subtotal+$shipping}}</strong></span>
           </td>

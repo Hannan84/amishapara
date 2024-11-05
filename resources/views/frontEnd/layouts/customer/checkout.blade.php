@@ -16,14 +16,15 @@
                         @csrf
                         <div class="card">
                            <div class="card-header">
-                                <h6>আপনার অর্ডারটি কনফার্ম করতে তথ্যগুলো পূরণ করে <span style="color:#06841d;">"অর্ডার করুন"</span> বাটন এ ক্লিক করুন অথবা ফোনে অর্ডার করতে এই নাম্বার <a href="tel:01888140165" style="color:#06841d">01888140165</a> এর উপরে ক্লিক করুন।   </h6>
+                                <h6 style="color:#0a700a">{{ __('messages.checkout') }}</h6>
+                                <!-- <h6>আপনার অর্ডারটি কনফার্ম করতে তথ্যগুলো পূরণ করে <span style="color:#06841d;">"অর্ডার করুন"</span> বাটন এ ক্লিক করুন অথবা ফোনে অর্ডার করতে এই নাম্বার <a href="tel:01888140165" style="color:#06841d">01888140165</a> এর উপরে ক্লিক করুন।   </h6> -->
 
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group mb-3">
-                                            <label for="name">আপনার নাম লিখুন *</label>
+                                            <label for="name">{{ __('messages.name') }} *</label>
                                             <input type="text" id="name"
                                                 class="form-control @error('name') is-invalid @enderror" name="name"
                                                 value="{{ old('name') }}"
@@ -38,7 +39,7 @@
                                     <!-- col-end -->
                                     <div class="col-sm-12">
                                         <div class="form-group mb-3">
-                                            <label for="phone">আপনার নাম্বার লিখুন *</label>
+                                            <label for="phone">{{ __('messages.number') }} *</label>
                                             <input type="text" minlength="11" id="number" maxlength="11"
                                                 pattern="0[0-9]+"
                                                 title="please enter number only and 0 must first character"
@@ -56,7 +57,7 @@
                                     <!-- col-end -->
                                     <div class="col-sm-12">
                                         <div class="form-group mb-3">
-                                            <label for="address">ঠিকানা লিখুন * জেলা,উপজেলা,থানা,পৌরসভা</label>
+                                            <label for="address">{{ __('messages.address') }} *</label>
                                             <input type="address" id="address"
                                                 class="form-control @error('address') is-invalid @enderror"
                                                 name="address"
@@ -71,7 +72,7 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group mb-3">
-                                            <label for="area">ডেলিভারি এরিয়া নিবার্চন করুন *</label>
+                                            <label for="area">{{ __('messages.area') }} *</label>
                                             <select type="area" id="area"
                                                 class="form-control @error('area') is-invalid @enderror" name="area"
                                                 required>
@@ -93,7 +94,7 @@
                                     <div class="col-sm-12">
 
                                         <div class="radio_payment">
-                                            <label id="payment_method">পেমেন্ট মেথড</label>
+                                            <label id="payment_method">{{ __('messages.payment') }}</label>
                                             <div class="payment_option">
 
                                             </div>
@@ -132,7 +133,7 @@
                                     <!-------------------->
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <button class="order_place" type="submit">অর্ডার করুন</button>
+                                            <button class="order_place" type="submit">{{ __('messages.cartButton') }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -151,16 +152,16 @@
                 <div class="cart_details table-responsive-sm">
                     <div class="card">
                         <div class="card-header">
-                            <h5>অর্ডারের তথ্য</h5>
+                            <h5>{{ __('messages.orderInfo') }}</h5>
                         </div>
                         <div class="card-body cartlist">
                             <table class="cart_table table table-bordered table-striped text-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th style="width: 20%;">ডিলিট</th>
-                                        <th style="width: 40%;">প্রোডাক্ট</th>
-                                        <th style="width: 20%;">পরিমাণ</th>
-                                        <th style="width: 20%;">মূল্য</th>
+                                        <th style="width: 20%;">{{ __('messages.delete') }}</th>
+                                        <th style="width: 40%;">{{ __('messages.product') }}</th>
+                                        <th style="width: 20%;">{{ __('messages.quentity') }}</th>
+                                        <th style="width: 20%;">{{ __('messages.price') }}</th>
                                     </tr>
                                 </thead>
 
@@ -200,21 +201,21 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="3" class="text-end px-4">মোট</th>
+                                        <th colspan="3" class="text-end px-4">{{ __('messages.subtotal') }}</th>
                                         <td class="px-4">
                                             <span id="net_total"><span class="alinur">৳
                                                 </span><strong>{{ $subtotal }}</strong></span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th colspan="3" class="text-end px-4">ডেলিভারি চার্জ</th>
+                                        <th colspan="3" class="text-end px-4">{{ __('messages.delCharge') }}</th>
                                         <td class="px-4">
                                             <span id="cart_shipping_cost"><span class="alinur">৳
                                                 </span><strong>{{ $shipping }}</strong></span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th colspan="3" class="text-end px-4">সর্বমোট</th>
+                                        <th colspan="3" class="text-end px-4">{{ __('messages.total') }}</th>
                                         <td class="px-4">
                                             <span id="grand_total"><span class="alinur">৳
                                                 </span><strong>{{ $subtotal + $shipping }}</strong></span>

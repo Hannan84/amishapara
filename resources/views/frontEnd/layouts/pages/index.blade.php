@@ -78,7 +78,7 @@
                     <h3 class="section-title-header">
                         <div class="timer_inner">
                             <div class="">
-                                <span class="section-title-name"> Top Categories </span>
+                                <span class="section-title-name"> {{ __('messages.topCat') }} </span>
                             </div>
                         </div>
                     </h3>
@@ -128,9 +128,9 @@
                     <h3 class="section-title-header">
                         <div class="timer_inner">
                             <div class="">
-                                <span class="section-title-name"> Hot Deal </span>
+                                <span class="section-title-name"> {{ __('messages.hotDeal') }} </span>
                             </div>
-                            <a href="{{ route('hotdeals') }}" class="view_more_btn" style="float:left">View All>></a>
+                            <a href="{{ route('hotdeals') }}" class="view_more_btn" style="float:left">{{ __('messages.viewMore') }}</a>
 
                             <!-- <div class="">
                                 <div class="offer_timer" id="simple_timer"></div>
@@ -222,7 +222,7 @@
                     <div class="sec_title">
                         <h3 class="section-title-header">
                             <span class="section-title-name">{{ $homecat->name }}</span>
-                            <a href="{{ route('category', $homecat->slug) }}" class="view_more_btn">View All>></a>
+                            <a href="{{ route('category', $homecat->slug) }}" class="view_more_btn">{{ __('messages.viewMore') }}</a>
                         </h3>
                     </div>
                 </div>
@@ -280,7 +280,7 @@
                                 <button class="add-to-cart-button" data-id="{{ $value->id }}">{{ __('messages.cartButton') }}</button>
                                 </div>
                             @endif
-                            <div class="product-overflow-quantity">
+                            {{--<div class="product-overflow-quantity">
                                 <a class="details-link" href="#"> </a>
                                 <div class="product-added-price">
                                     <h4 class="added-price">৳ <span class="add_price">{{ $value->new_price }}</span></h4>
@@ -305,7 +305,7 @@
                                         </span>
                                     </div>
                                 </div>
-                            </button>
+                            </button>--}}
                         </div>
                         @endforeach
                     </div>
@@ -383,7 +383,7 @@
             <div class="col-sm-12">
                 <div class="sec_title">
                     <h3 class="section-title-header">
-                        <span class="section-title-name"> Top Brands </span>
+                        <span class="section-title-name"> {{ __('messages.topBrand') }} </span>
 
                     </h3>
                 </div>
@@ -412,7 +412,7 @@
 <script src="{{ asset('public/frontEnd/js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('public/frontEnd/js/jquery.syotimer.min.js') }}"></script>
 
-<script>
+{{--<script>
     $(document).ready(function() {
         $(".minus").click(function() {
             const cartId = $(this).data("id");
@@ -436,9 +436,9 @@
             return false;
         });
     });
-</script>
+</script>--}}
 
-<script>
+{{--<script>
     $(document).ready(function() {
         $('.product_item').each(function() {
             const cartId = $(this).attr('id');
@@ -462,7 +462,7 @@
             }
         });
     });
-</script>
+</script>--}}
 
 <script>
     $(document).ready(function() {

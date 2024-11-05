@@ -109,7 +109,7 @@
             <div class="mobile-search">
                 <form action="{{route('search')}}">
                     <button><i data-feather="search"></i></button>
-                    <input type="text" placeholder="Search Product ... " value="" class="msearch_keyword msearch_click" name="keyword" />
+                    <input type="text" placeholder="{{ __('messages.search') }}" value="" class="msearch_keyword msearch_click" name="keyword" />
                 </form>
                 <div class="search_result"></div>
             </div>
@@ -127,7 +127,7 @@
                                         <button>
                                             <i data-feather="search"></i>
                                         </button>
-                                        <input type="text" placeholder="Search Product..." class="search_keyword search_click" name="keyword" />
+                                        <input type="text" placeholder="{{ __('messages.search') }}" class="search_keyword search_click" name="keyword" />
                                     </form>
                                     <div class="search_result"></div>
                                 </div>
@@ -363,7 +363,8 @@
 
           <li class="mobile_home">
               <a href="{{route('home')}}">
-                  <span><i class="fa-solid fa-home"></i></span> <span>{{ __('messages.home') }}</span>
+                  <span><i class="fa-solid fa-home"></i></span>
+                   <span>{{ __('messages.home') }}</span>
               </a>
           </li>
 

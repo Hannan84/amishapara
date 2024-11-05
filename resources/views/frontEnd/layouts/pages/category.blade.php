@@ -190,15 +190,6 @@
                                         </div>
                                     </div>
                                     @endif
-                                    <button class="cart-badge">
-                                        <div class="cart-badge-inner">
-                                            <div class="cart-badge-box">
-                                                <span class="cart-badge-text">
-                                                    <p class="text-white">+</p>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </button>
                                     <div class="pro_img">
                                         <a href="{{ route('product', $value->slug) }}">
                                             <img src="{{ asset($value->image ? $value->image->image : '') }}"
@@ -314,11 +305,5 @@
                 1));
 
         });
-    </script>
-    <script>
-        $(".cart-badge").click(function() {
-            // alert("hello");
-
-        })
     </script>
 @endpush
