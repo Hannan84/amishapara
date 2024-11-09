@@ -6,14 +6,14 @@
             <div class="row justify-content-center">
                 <div class="col-sm-5">
                     <div class="form-content">
-                        <p class="auth-title"> কাস্টমার রেজিস্ট্রেশন </p>
+                        <p class="auth-title">{{ __('messages.cus_register') }}</p>
                         <form action="{{ route('customer.store') }}" method="POST" data-parsley-validate="">
                             @csrf
                             <div class="form-group mb-3">
-                                <label for="name">নাম</label>
+                                <label for="name">{{ __('messages.reg_name') }}</label>
                                 <input type="text" id="name"
                                     class="form-control @error('name') is-invalid @enderror" name="name"
-                                    value="{{ old('name') }}" placeholder=" আপনার নাম " required>
+                                    value="{{ old('name') }}" placeholder="{{ __('messages.reg_name') }}" required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -22,10 +22,10 @@
                             </div>
                             <!-- col-end -->
                             <div class="form-group mb-3">
-                                <label for="phone"> মোবাইল নাম্বার </label>
+                                <label for="phone"> {{ __('messages.reg_mob') }}</label>
                                 <input type="number" id="phone"
                                     class="form-control @error('phone') is-invalid @enderror" name="phone"
-                                    value="{{ old('phone') }}" placeholder="মোবাইল নাম্বার" required>
+                                    value="{{ old('phone') }}" placeholder="{{ __('messages.reg_mob') }}" required>
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,10 +33,10 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <label for="email"> ইমেইল </label>
+                                <label for="email"> {{ __('messages.reg_email') }} </label>
                                 <input type="email" id="email"
                                     class="form-control @error('email') is-invalid @enderror" name="email"
-                                    value="{{ old('email') }}" placeholder="ইমেইল">
+                                    value="{{ old('email') }}" placeholder="{{ __('messages.reg_email') }}">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -57,9 +57,9 @@
                             <!--</div>-->
                             <!-- col-end -->
                             <div class="form-group mb-3">
-                                <label for="password"> পাসওয়ার্ড </label>
+                                <label for="password"> {{ __('messages.reg_pass') }} </label>
                                 <input type="password" id="password"
-                                    class="form-control @error('password') is-invalid @enderror" placeholder="পাসওয়ার্ড "
+                                    class="form-control @error('password') is-invalid @enderror" placeholder="{{ __('messages.reg_pass') }} "
                                     name="password" value="{{ old('password') }}" required>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -68,10 +68,10 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <label for="address"> ঠিকানা </label>
+                                <label for="address"> {{ __('messages.reg_addr') }} </label>
                                 <input type="text" id="address"
                                     class="form-control @error('address') is-invalid @enderror" name="address"
-                                    value="{{ old('address') }}" placeholder="ঠিকানা">
+                                    value="{{ old('address') }}" placeholder="{{ __('messages.reg_addr') }}">
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -79,27 +79,27 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <label for="gender"> লিঙ্গ </label><br>
+                                <label for="gender"> {{ __('messages.reg_gend') }} </label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender"
                                         id="female" value="female" {{ old("gender") == 'female' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="female">
-                                        স্ত্রী
+                                    {{ __('messages.female') }}
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="gender"
                                         id="male" value="male" {{ old("gender") == 'male' ? 'checked' : '' }}>
                                     <label class="form-check-label" for="male">
-                                        পুরুষ
+                                    {{ __('messages.male') }}
                                     </label>
                                 </div>
                             </div>
                             <!-- col-end -->
-                            <button class="submit-btn">রেজিস্ট্রেশন</button>
+                            <button class="submit-btn">{{ __('messages.registration') }}</button>
                             <div class="register-now no-account">
-                                <p><i class="fa-solid fa-user"></i> রেজিস্ট্রেশন করা থাকলে?</p>
-                                <a href="{{ route('customer.login') }}"><i data-feather="edit-3"></i> লগিন করুন </a>
+                                <p><i class="fa-solid fa-user"></i> {{ __('messages.if_reg') }}</p>
+                                <a href="{{ route('customer.login') }}"><i data-feather="edit-3"></i> {{ __('messages.reg_log') }}</a>
                             </div>
                     </div>
                     <!-- col-end -->

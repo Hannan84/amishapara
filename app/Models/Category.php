@@ -54,7 +54,14 @@ class Category extends Model
         return $this->hasMany(Product::class, 'category_id')->select('id', 'name', 'slug', 'category_id', 'new_price', 'old_price')->orderBy('id','ASC');
     }
     
-    
+    public function getTranslation($locale,$id)
+    {
+        if($locale == 'bn'){
+            return $this->where('id', $id)->first()->bn_name;
+        }else{
+            return $this->where('id', $id)->first()->name;
+        }
+    }
 
 
 }

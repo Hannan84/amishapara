@@ -54,7 +54,7 @@
             <li class="parent-category">
                 <a href="{{url('category/'.$scategory->slug)}}" class="menu-category-name">
                     <img src="{{asset($scategory->image)}}" alt="" class="side_cat_img" />
-                    {{$scategory->name}}
+                    {{ $scategory->getTranslation(App::getLocale(), $scategory->id) }}
                 </a>
                 @if($scategory->subcategories->count() > 0)
                 <span class="menu-category-toggle">
@@ -205,7 +205,7 @@
               <li>
                 <a href="{{ url('category/' . $scategory->slug) }}">
                   <i data-feather="shopping-cart"></i>
-                  <span> {{ $scategory->name }} </span>
+                  <span>{{ $scategory->getTranslation(App::getLocale(), $scategory->id) }}</span>
                   @if ($scategory->subcategories->count() > 0)
                   <a href="#sidebar-{{ $key }}" data-bs-toggle="collapse">
                     <span class="menu-arrow"></span>

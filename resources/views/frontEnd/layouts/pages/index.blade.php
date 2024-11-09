@@ -221,7 +221,7 @@
                 <div class="col-sm-12">
                     <div class="sec_title">
                         <h3 class="section-title-header">
-                            <span class="section-title-name">{{ $homecat->name }}</span>
+                            <span class="section-title-name">{{ $homecat->getTranslation(App::getLocale(), $homecat->id) }}</span>
                             <a href="{{ route('category', $homecat->slug) }}" class="view_more_btn">{{ __('messages.viewMore') }}</a>
                         </h3>
                     </div>
