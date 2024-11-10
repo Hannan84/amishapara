@@ -43,6 +43,7 @@ class ChildcategoryController extends Controller
         $this->validate($request, [
             'subcategory_id' => 'required',
             'childcategoryName' => 'required',
+            'bn_name' => 'required',
             'status' => 'required',
         ]);
         // image with intervention 
@@ -69,6 +70,7 @@ class ChildcategoryController extends Controller
         $this->validate($request, [
             'subcategory_id' => 'required',
             'childcategoryName' => 'required',
+            'bn_name' => 'required',
             'status' => 'required',
         ]);
         $update_data = Childcategory::find($request->id);

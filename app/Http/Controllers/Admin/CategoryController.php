@@ -34,6 +34,7 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'bn_name' => 'required',
             'status' => 'required',
         ]);
         // image with intervention 
@@ -80,6 +81,7 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'bn_name' => 'required',
         ]);
         $update_data = Category::find($request->id);
         $input = $request->all();

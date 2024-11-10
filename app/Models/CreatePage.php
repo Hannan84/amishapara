@@ -10,4 +10,14 @@ class CreatePage extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function pageTrans($locale,$id)
+    {
+        if($locale == 'bn'){
+            $transName = $this->where('id', $id)->first()->bn_name;
+        }else{
+            $transName = $this->where('id', $id)->first()->name;
+        }
+        return $transName? $transName: $this->name;
+    }
 }

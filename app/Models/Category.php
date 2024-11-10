@@ -57,10 +57,11 @@ class Category extends Model
     public function getTranslation($locale,$id)
     {
         if($locale == 'bn'){
-            return $this->where('id', $id)->first()->bn_name;
+            $transName = $this->where('id', $id)->first()->bn_name;
         }else{
-            return $this->where('id', $id)->first()->name;
+            $transName = $this->where('id', $id)->first()->name;
         }
+        return $transName? $transName: $this->name;
     }
 
 

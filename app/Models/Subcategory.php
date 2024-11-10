@@ -20,6 +20,15 @@ class Subcategory extends Model
     {
         return $this->hasMany(Childcategory::class, 'subcategory_id')->select('id','slug','subcategory_id','childcategoryName')->where('status',1);
     }
-    
+
+    public function subcatTrans($locale,$id)
+    {
+        if($locale == 'bn'){
+            $transName = $this->where('id', $id)->first()->bn_name;
+        }else{
+            $transName = $this->where('id', $id)->first()->subcategoryName;
+        }
+        return $transName? $transName: $this->subcategoryName;
+    }
     
 }

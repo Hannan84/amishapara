@@ -96,7 +96,7 @@
                             </div>
                             <div class="cat_name">
                                 <a href="{{ route('category', $value->slug) }}">
-                                    {{ $value->name }}
+                                {{ $value->getTranslation(App::getLocale(), $value->id) }}
                                 </a>
                             </div>
                         </div>

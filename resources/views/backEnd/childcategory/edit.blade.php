@@ -63,6 +63,17 @@
                             @enderror
                         </div>
                     </div>
+                    <div class="col-sm-12">
+                        <div class="form-group mb-3">
+                            <label for="bn_name" class="form-label">Bangla Name *</label>
+                            <input type="text" class="form-control @error('bn_name') is-invalid @enderror" name="bn_name" value="{{ $edit_data->bn_name }}" id="bn_name" required="">
+                            @error('bn_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
                     <!-- col-end -->
                     <div class="col-sm-12">
                         <div class="form-group mb-3">

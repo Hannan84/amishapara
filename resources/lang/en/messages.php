@@ -47,4 +47,13 @@ return [
     'if_reg' => "If Registered?",
     'male' => "Male",
     'female' => "Female",
+    //order track
+    'orderTack' => 'Order Track',
+    'submit' => 'Submit',
+    'invoice' => 'Invoice Id',
+    //footer
+    'info' => 'Info',
+    'policy' => 'Policy',
+    'connect' => 'Stay Connected',
+    'contact' => 'Contact Us',
 ];

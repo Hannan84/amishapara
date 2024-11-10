@@ -49,6 +49,43 @@
                 <i class="fa fa-times"></i>
             </div>
         </div>
+        <div class="mobile-menu-logo">
+            <li>
+              <a href="{{ route('switchLang', 'en') }}">
+                  <span style="color: {{ App::getLocale() == 'en' ? '#fe5200' : 'inherit' }}">Enlish</span>
+              </a>/
+              <a href="{{ route('switchLang', 'bn') }}">
+                  <span style="color: {{ App::getLocale() == 'bn' ? '#fe5200' : 'inherit' }}">বাংলা</span>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('customer.order_track')}}">
+                  <span>
+                      <i class="fa fa-truck"></i>
+                  </span>
+                  <span>{{ __('messages.track') }}</span>
+              </a>
+            </li>
+            @if(Auth::guard('customer')->user())
+            <li>
+                <a href="{{route('customer.account')}}">
+                    <span>
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span>{{ __('messages.account') }}</span>
+                </a>
+            </li>
+            @else
+            <li>
+                <a href="{{route('customer.login')}}">
+                    <span>
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <span>{{ __('messages.login') }}</span>
+                </a>
+            </li>
+            @endif
+        </div>
         <ul class="first-nav">
             @foreach($menucategories as $scategory)
             <li class="parent-category">
@@ -64,13 +101,13 @@
                 <ul class="second-nav" style="display: none;">
                     @foreach($scategory->subcategories as $subcategory)
                     <li class="parent-subcategory">
-                        <a href="{{url('subcategory/'.$subcategory->slug)}}" class="menu-subcategory-name">{{$subcategory->subcategoryName}}</a>
+                        <a href="{{url('subcategory/'.$subcategory->slug)}}" class="menu-subcategory-name">{{ $subcategory->subcatTrans(App::getLocale(), $subcategory->id) }}</a>
                         @if($subcategory->childcategories->count() > 0)
                         <span class="menu-subcategory-toggle"><i class="fa fa-chevron-down"></i></span>
                         @endif
                         <ul class="third-nav" style="display: none;">
                             @foreach($subcategory->childcategories as $childcat)
-                            <li class="childcategory"><a href="{{url('products/'.$childcat->slug)}}" class="menu-childcategory-name">{{$childcat->childcategoryName}}</a></li>
+                            <li class="childcategory"><a href="{{url('products/'.$childcat->slug)}}" class="menu-childcategory-name">{{ $childcat->childcatTrans(App::getLocale(), $childcat->id) }}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -134,7 +171,7 @@
                                 <div class="header-list-items">
                                     <ul>
                                         <li class="track_btn">
-                                            <a href="{{ route('switchLang', 'en') }}">EN</a> / <a href="{{ route('switchLang', 'bn') }}">বাং</a>
+                                            <a href="{{ route('switchLang', 'en') }}" style="color: {{ App::getLocale() == 'en' ? '#fe5200' : 'inherit' }}; font-size:small;">English</a> / <a href="{{ route('switchLang', 'bn') }}" style="color: {{ App::getLocale() == 'bn' ? '#fe5200' : 'inherit' }}; font-size:small;">বাংলা</a>
                                         </li>
                                         <li class="track_btn">
                                             <a href="{{route('customer.order_track')}}"> <i class="fa fa-truck"></i>{{ __('messages.track') }}</a>
@@ -218,7 +255,7 @@
                     @foreach ($scategory->subcategories as $index => $subcat)
                     <li>
                       <a href="{{ url('subcategory/' . $subcat->slug) }}">
-                        <i data-feather="file-plus"></i>{{ $subcat->subcategoryName }}
+                        <i data-feather="file-plus"></i>{{ $subcat->subcatTrans(App::getLocale(), $subcat->id) }}
                         @if($subcat->childcategories->count() > 0)
                         <a href="#subsidebar-{{ $index }}" data-bs-toggle="collapse">
                           <span class="menu-arrow sub-menu-arrow"></span>
@@ -230,7 +267,7 @@
                         <ul class="nav-second-level">
                           @foreach($subcat->childcategories as $childcat)
                           <li class="sub">
-                            <a href="{{url('products/'.$childcat->slug)}}"><i data-feather="file-plus"></i>{{$childcat->childcategoryName}}</a>
+                            <a href="{{url('products/'.$childcat->slug)}}"><i data-feather="file-plus"></i>{{ $childcat->childcatTrans(App::getLocale(), $childcat->id) }}</a>
                           </li>
                           @endforeach
                         </ul>
@@ -278,12 +315,12 @@
             <div class="col-sm-3 mb-3 mb-sm-0 col-6">
                 <div class="footer-menu">
                     <ul>
-                        <li class="title"><a>Useful Link</a></li>
+                        <li class="title"><a>{{ __('messages.info') }}</a></li>
                         <li>
-                            <a href="{{route('contact')}}">Contact Us</a>
+                            <a href="{{route('contact')}}">{{ __('messages.contact') }}</a>
                         </li>
                         @foreach($pages as $page)
-                        <li><a href="{{route('page',['slug'=>$page->slug])}}">{{$page->name}}</a></li>
+                        <li><a href="{{route('page',['slug'=>$page->slug])}}">{{ $page->pageTrans(App::getLocale(), $page->id) }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -292,10 +329,10 @@
             <div class="col-sm-2 mb-3 mb-sm-0 col-6">
                 <div class="footer-menu">
                     <ul>
-                        <li class="title"><a>Link</a></li>
+                        <li class="title"><a>{{ __('messages.policy') }}</a></li>
                         @foreach($pagesright as $key=>$value)
                         <li>
-                            <a href="{{route('page',['slug'=>$value->slug])}}">{{$value->name}}</a>
+                            <a href="{{route('page',['slug'=>$value->slug])}}">{{ $value->pageTrans(App::getLocale(), $value->id) }}</a>
                         </li>
                         @endforeach
                     </ul>
@@ -306,7 +343,7 @@
             <div class="col-sm-3 mb-3 mb-sm-0">
                 <div class="footer-menu">
                     <ul>
-                        <li class="title stay_conn"><a>Stay Connected</a></li>
+                        <li class="title stay_conn"><a>{{ __('messages.connect') }}</a></li>
                     </ul>
                     <ul class="social_link">
                         @foreach($socialicons as $value)
@@ -316,7 +353,7 @@
                         @endforeach
                     </ul>
                     <div class="d_app">
-                        <h2>Payment Option</h2>
+                        <h2>{{ __('messages.payment') }}</h2>
                             <img src="{{asset('public/frontEnd/images/cod.png')}}" alt="" />
                             <!-- <img src="{{asset('public/frontEnd/images/bkash.png')}}" alt="" /> -->
                             <!-- <img src="{{asset('public/frontEnd/images/nagad.png')}}" alt="" /> -->
@@ -341,7 +378,7 @@
     <!-- end Footer -->
     <!-- END wrapper -->
 
-    <div class="footer_nav">
+    {{--<div class="footer_nav">
       <ul>
           <li>
               <a class="toggle">
@@ -396,7 +433,11 @@
           </li>
           @endif
       </ul>
-  </div>
+    </div>--}}
+    <!-- WhatsApp Button HTML -->
+    <a href="https://wa.me/8801888140165" target="_blank" class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" alt="Chat with us on WhatsApp" />
+    </a>
 
     <!-- Vendor js -->
     <script src="{{asset('public/backEnd/')}}/assets/js/vendor.min.js"></script>

@@ -1227,7 +1227,7 @@ section.slider-section {
 }
 
 .footer-menu .title {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-weight: 600;
     color: #000;
     margin-bottom: 10px;
@@ -3660,10 +3660,10 @@ ul.social_link {
 
 .d_app h2 {
     font-size: 15px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: #000;
     font-weight: 600;
-    letter-spacing: 1px;
+    /* letter-spacing: 1px; */
 }
 
 .stay_conn {
@@ -4481,4 +4481,22 @@ i.fa-solid.fa-angle-right:hover {
     .chackout_row {
         flex-direction: column-reverse;
     }
+}
+
+/* WhatsApp Button Styling */
+.whatsapp-button {
+    position: fixed;
+    bottom: 10px; /* Adjust the distance from the bottom */
+    right: 10px; /* Adjust the distance from the right */
+    z-index: 9999; /* Ensure it's always on top */
+    background-color: #25d366; /* WhatsApp green */
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-button img {
+    width: 30px; /* Size of the WhatsApp icon */
+    height: 30px;
+    display: block;
 }

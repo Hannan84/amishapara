@@ -31,6 +31,7 @@ class CreatePageController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'title' => 'required',
+            'bn_name' => 'required',
             'description' => 'required',
             'status' => 'required',
         ]);
@@ -52,6 +53,7 @@ class CreatePageController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'bn_name' => 'required',
             'title' => 'required',
             'description' => 'required',
         ]);

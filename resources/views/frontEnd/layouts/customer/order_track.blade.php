@@ -6,11 +6,11 @@
         <div class="row justify-content-center">
             <div class="col-sm-5">
                 <div class="form-content">
-                    <p class="auth-title">Order Track </p>
+                    <p class="auth-title">{{ __('messages.orderTack') }}</p>
                     <form action="{{route('customer.order_track_result')}}"  data-parsley-validate="">
                         <div class="form-group mb-3">
-                            <label for="phone">Phone Number</label>
-                            <input type="number" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="Enter Phone Number" required>
+                            <label for="phone">{{ __('messages.reg_mob') }}</label>
+                            <input type="number" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" placeholder="{{ __('messages.reg_mob') }}" required>
                             @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -19,8 +19,8 @@
                         </div>
                         <!-- col-end -->
                         <div class="form-group mb-3">
-                            <label for="invoice_id">Invoice ID</label>
-                            <input type="number" id="invoice_id" class="form-control @error('invoice_id') is-invalid @enderror" name="invoice_id" value="{{ old('invoice_id') }}" placeholder="Enter Your Invoice ID">
+                            <label for="invoice_id">{{ __('messages.invoice') }}</label>
+                            <input type="number" id="invoice_id" class="form-control @error('invoice_id') is-invalid @enderror" name="invoice_id" value="{{ old('invoice_id') }}" placeholder="{{ __('messages.invoice') }}">
                             @error('invoice_id')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                         </div>
                         <!-- col-end -->
                         <div class="form-group mb-3">
-                            <button class="submit-btn">submit</button>
+                            <button class="submit-btn">{{ __('messages.submit') }}</button>
                         </div>
                      <!-- col-end -->
                      </form>

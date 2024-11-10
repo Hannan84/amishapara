@@ -44,6 +44,7 @@ class SubcategoryController extends Controller
         $this->validate($request, [
             'category_id' => 'required',
             'subcategoryName' => 'required',
+            'bn_name' => 'required',
             'status' => 'required',
         ]);
         // image with intervention 
@@ -90,6 +91,7 @@ class SubcategoryController extends Controller
         $this->validate($request, [
             'category_id' => 'required',
             'subcategoryName' => 'required',
+            'bn_name' => 'required',
             'status' => 'required',
         ]);
         $update_data = Subcategory::find($request->id);
