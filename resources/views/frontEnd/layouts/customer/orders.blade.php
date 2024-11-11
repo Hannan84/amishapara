@@ -11,7 +11,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="customer-content">
-                    <h5 class="account-title">My Order</h5>
+                    <h5 class="account-title">{{ __('messages.order') }}</h5>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>

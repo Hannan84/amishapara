@@ -56,4 +56,16 @@ return [
     'policy' => 'Policy',
     'connect' => 'Stay Connected',
     'contact' => 'Contact Us',
+    //account
+    'order' => 'Orders',
+    'profile_update' => 'Profile Update',
+    'change_pass' => 'Password Change',
+    'logout' => 'Logout',
+    'image' => 'Image',
+    'district' => 'District',
+    'dis_area' => 'Area',
+    'old_pass' => 'Old Password',
+    'new_pass' => 'New Password',
+    'con_pass' => 'Confirmed Password',
+    'update' => 'Update',
 ];

@@ -11,12 +11,12 @@
             </div>
             <div class="col-sm-9">
                 <div class="customer-content checkout-shipping">
-                    <h5 class="account-title">Change Password</h5>
+                    <h5 class="account-title">{{ __('messages.change_pass') }}</h5>
                     <form action="{{route('customer.password_update')}}" method="POST" class="row justify-content-center" data-parsley-validate="">
                         @csrf
                         <div class="col-sm-12">
                             <div class="form-group mb-3">
-                                <label for="old_password">Old Password *</label>
+                                <label for="old_password">{{ __('messages.old_pass') }} *</label>
                                 <span data-feather="folder"></span>
                                 <input type="password" id="old_password" class="form-control @error('old_password') is-invalid @enderror" name="old_password" value="{{old('old_password')}}"  required>
                                 @error('old_password')
@@ -29,7 +29,7 @@
                         <!-- col-end -->
                         <div class="col-sm-12">
                             <div class="form-group mb-3">
-                                <label for="new_password">New Password *</label>
+                                <label for="new_password">{{ __('messages.new_pass') }} *</label>
                                 <span data-feather="lock"></span>
                                 <input type="password" id="new_password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" value="{{old('new_password')}}"  required>
                                 @error('new_password')
@@ -42,7 +42,7 @@
                         <!-- col-end -->
                         <div class="col-sm-12">
                             <div class="form-group mb-3">
-                                <label for="confirm_password">Confirmed Password *</label>
+                                <label for="confirm_password">{{ __('messages.con_pass') }} *</label>
                                 <span data-feather="key"></span>
                                 <input type="password" id="confirm_password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" value="{{old('confirm_password')}}"  required>
                                 @error('confirm_password')
@@ -55,7 +55,7 @@
                         <!-- col-end -->
                         <div class="col-sm-12">
                             <div class="form-group mb-3">
-                                <button type="submit" class="submit-btn">Update</button>
+                                <button type="submit" class="submit-btn">{{ __('messages.update') }}</button>
                             </div>
                         </div>
                         <!-- col-end -->

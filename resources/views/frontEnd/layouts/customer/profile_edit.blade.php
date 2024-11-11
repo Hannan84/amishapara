@@ -11,12 +11,12 @@
             </div>
             <div class="col-sm-9">
                 <div class="customer-content checkout-shipping">
-                    <h5 class="account-title">Profile Update</h5>
+                    <h5 class="account-title">{{ __('messages.profile_update') }}</h5>
                     <form action="{{route('customer.profile_update')}}" method="POST" class="row" enctype="multipart/form-data" data-parsley-validate="">
                         @csrf
                         <div class="col-sm-6">
                             <div class="form-group mb-3">
-                                <label for="name">Full Name *</label>
+                                <label for="name">{{ __('messages.reg_name') }} *</label>
                                 <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$profile_edit->name}}" required>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
                         <!-- col-end -->
                         <div class="col-sm-6">
                             <div class="form-group mb-3">
-                                <label for="phone">Phone Number *</label>
+                                <label for="phone">{{ __('messages.reg_mob') }} *</label>
                                 <input type="number" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{$profile_edit->phone}}"  required>
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
@@ -40,7 +40,7 @@
                         <!-- col-end -->
                         <div class="col-sm-6">
                             <div class="form-group mb-3">
-                                <label for="email">Email Address *</label>
+                                <label for="email">{{ __('messages.reg_email') }} *</label>
                                 <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$profile_edit->email}}"  required>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -52,7 +52,7 @@
                         <!-- col-end -->
                         <div class="col-sm-6">
                             <div class="form-group mb-3">
-                                <label for="address">Address *</label>
+                                <label for="address">{{ __('messages.reg_addr') }} *</label>
                                 <input type="text" id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{$profile_edit->address}}"  required>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
@@ -64,7 +64,7 @@
                         <!-- col-end -->
                         <div class="col-sm-6">
                             <div class="form-group mb-3">
-                                <label for="district">District *</label>
+                                <label for="district">{{ __('messages.district') }} *</label>
                                 <select  id="district" class="form-control select2 district @error('district') is-invalid @enderror" name="district" value="{{ old('district') }}"  required>
                                     <option value="">Select...</option>
                                     @foreach($districts as $key=>$district)
@@ -81,7 +81,7 @@
                         <!-- col-end -->
                         <div class="col-sm-6">
                             <div class="form-group mb-3">
-                                <label for="area">Area *</label>
+                                <label for="area">{{ __('messages.dis_area') }} *</label>
                                 <select  id="area" class="form-control area select2 @error('area') is-invalid @enderror" name="area" value="{{ old('area') }}"  required>
                                     <option value="">Select...</option>
                                     @foreach($areas as $key=>$area)
@@ -99,7 +99,7 @@
                         <!-- col-end -->
                         <div class="col-sm-12">
                             <div class="form-group mb-3">
-                                <label for="image">Image *</label>
+                                <label for="image">{{ __('messages.image') }} *</label>
                                 <input type="file" id="image" class="form-control @error('image') is-invalid @enderror" name="image" value="{{Auth::guard('customer')->user()->image}}" >
                                 <img src="{{asset($profile_edit->image)}}" class="rounded-circle m-1" width="50px" alt="">
                                 @error('image')
@@ -112,7 +112,7 @@
                         <!-- col-end -->
                         <div class="col-sm-12">
                             <div class="form-group mb-3">
-                                <button type="submit" class="submit-btn">Update</button>
+                                <button type="submit" class="submit-btn">{{ __('messages.update') }}</button>
                             </div>
                         </div>
                         <!-- col-end -->

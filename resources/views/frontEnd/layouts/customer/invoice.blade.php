@@ -12,28 +12,31 @@
     td{
         font-size: 16px;
     }
-   @page { size: a4;  margin: 0mm; background:#F9F9F9 }
+   @page { size: a4;  margin: 5mm; background:#F9F9F9 }
    @media print {
-    td{
+    /* td{
         font-size: 18px;
-    }
-    header,footer,.no-print {
+    } */
+    .mobile-menu,.navbar-custom,.left-side-menu,.whatsapp-button,.back,header,footer,.no-print {
       display: none !important;
+    }
+    .invoice-bar{
+        transform: none;
     }
   }
 </style>
 <section class="customer-invoice ">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 back">
                 <a href="{{route('customer.orders')}}"><strong><i class="fa-solid fa-arrow-left"></i> Back To Order</strong></a>
             </div>
             <div class="col-sm-6">
                 <button onclick="printFunction()" class="no-print invoice_btn"><i class="fa fa-print"></i></button>
             </div>
             <div class="col-sm-12">
-                <div class="invoice-innter" style="width: 900px;margin: 0 auto;background: #f9f9f9;overflow: hidden;padding: 30px;padding-top: 0;">
-                    <table style="width:100%">
+                <div class="invoice-innter" style="width: 700px;margin: 0 auto;background: #f9f9f9;overflow: hidden;padding: 30px;padding-top: 0;">
+                    <table class="table_up" style="width:100%">
                         <tr>
                             <td style="width: 40%; float: left; padding-top: 15px;">
                                 <img src="{{asset($generalsetting->white_logo)}}" style="margin-top:25px !important;width:150px" alt="">
@@ -46,11 +49,11 @@
                                     <p style="font-size:16px;line-height:1.8;color:#222">{{$contact->address}}</p>
                                 </div>
                             </td>
-                            <td  style="width:60%;float: left;">
+                            <td  style="width:60%;float: left;" class="table_up_td2">
                                 <div class="invoice-bar" style=" background: #00aef0; transform: skew(38deg); width: 100%; margin-left: 65px; padding: 20px 60px; ">
                                     <p style="font-size: 30px; color: #fff; transform: skew(-38deg); text-transform: uppercase; text-align: right; font-weight: bold;">Invoice</p>
                                 </div>
-                                <div class="invoice-bar" style="background:#fff; transform: skew(36deg); width: 80%; margin-left: 182px; padding: 12px 32px; margin-top: 6px;text-align:right">
+                                <div class="invoice-bar" style="transform: skew(36deg); margin-top: 6px;text-align:right">
                                    <p style="transform: skew(-36deg);display:inline-block">Invoice Date: <strong>{{$order->created_at->format('d-m-y')}}</strong></p>
                                    <p style="transform: skew(-36deg);display:inline-block">Invoice No: <strong>{{$order->invoice_id}}</p>
                                     </p>
@@ -65,8 +68,8 @@
                             </td>
                         </tr>
                     </table>
-                    <table class="table" style="margin-top: 30px">
-                        <thead style="background: #00aef0; color: #fff;">
+                    <table class="table" style="margin-top: 30px;width:100%">
+                        <thead style="background: #00aef0;">
                             <tr>
                                 <th>SL</th>
                                 <th>Product</th>
@@ -89,21 +92,21 @@
                     </table>
                     <div class="invoice-bottom">
                        
-                        <table class="table" style="width: 300px; float: right;    margin-bottom: 30px;">
+                        <table class="table" style="width: 200px; float: right;    margin-bottom: 30px;">
                             <tbody style="background:#00aef0">
-                                <tr style="color:#fff">
+                                <tr>
                                     <td><strong>SubTotal</strong></td>
                                     <td><strong>৳{{$order->orderdetails->sum('sale_price')}}</strong></td>
                                 </tr>
-                                <tr style="color:#fff">
+                                <tr>
                                     <td><strong>Shipping(+)</strong></td>
                                     <td><strong>৳{{$order->shipping_charge}}</strong></td>
                                 </tr>
-                                <tr style="color:#fff">
+                                <tr>
                                     <td><strong>Discount(-)</strong></td>
                                     <td><strong>৳{{$order->discount}}</strong></td>
                                 </tr>
-                                <tr style="background:#00aef0;color:#fff">
+                                <tr>
                                     <td><strong>Final Total</strong></td>
                                     <td><strong>৳{{$order->amount}}</strong></td>
                                 </tr>
