@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('childcategoryName', 255)->default('text');
             $table->string('slug', 255)->default('text');
+            $table->string('bn_name', 255)->default('text');
             $table->integer('subcategory_id')->unsigned()->default(0);
             $table->string('meta_title')->nullable();
             $table->text('meta_decription')->nullable();

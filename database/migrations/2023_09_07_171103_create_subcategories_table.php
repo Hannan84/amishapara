@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('subcategoryName');
             $table->string('slug');
+            $table->string('bn_name');
             $table->integer('category_id');
             $table->text('image')->nullable();
             $table->string('meta_title')->nullable();

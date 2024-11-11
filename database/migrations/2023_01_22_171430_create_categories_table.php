@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
+            $table->string('bn_name');
             $table->integer('parent_id')->default('0');
             $table->string('image')->default('public/uploads/category/default.png');
             $table->string('meta_title')->nullable();
