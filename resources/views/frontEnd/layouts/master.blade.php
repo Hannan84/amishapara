@@ -218,7 +218,7 @@
                                                     </li>
                                                     @endforeach
                                                 </ul>
-                                                <p><strong>সর্বমোট : ৳{{$subtotal}}</strong></p>
+                                                <p><strong>{{ __('messages.total') }} : ৳{{$subtotal}}</strong></p>
                                                 <a href="{{route('customer.checkout')}}" class="go_cart">{{ __('messages.cartButton') }}</a>
                                             </div>
                                         </li>

@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="category-breadcrumb d-flex align-items-center">
-                            <strong>{{ $category->name }}</strong>
+                            <strong>{{ $category->getTranslation(App::getLocale(), $category->id) }}</strong>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -156,7 +156,7 @@
                                                                     type="checkbox"
                                                                     @if (is_array(request()->get('subcategory')) && in_array($subcategory->id, request()->get('subcategory'))) checked @endif />
                                                                 <p class="subcategory-filter-name">
-                                                                    {{ $subcategory->subcategoryName }}</p>
+                                                                {{ $subcategory->subcatTrans(App::getLocale(), $subcategory->id) }}</p>
                                                             </label>
                                                         </li>
                                                     @endforeach
@@ -218,13 +218,13 @@
 
                                         <div class="cart_btn order_button">
                                             <a href="{{ route('product', $value->slug) }}"
-                                                class="addcartbutton">অর্ডার</a>
+                                                class="addcartbutton">{{ __('messages.cartButton') }}</a>
                                         </div>
 
                                     </div>
                                 @else
                                     <div class="pro_btn">
-                                    <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
+                                    <button class="add-to-cart-button" data-id="{{ $value->id }}">{{ __('messages.cartButton') }}</button>
 
                                     </div>
                                 @endif

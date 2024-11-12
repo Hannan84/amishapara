@@ -33,7 +33,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="category-breadcrumb d-flex align-items-center">
-                        <strong>{{ $childcategory->childcategoryName }}</strong>
+                        <strong>{{ $childcategory->childcatTrans(App::getLocale(), $childcategory->id) }}</strong>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -178,7 +178,7 @@
                         <div class="pro_btn">
                            
                             <div class="cart_btn order_button">
-                                <a href="{{ route('product',$value->slug) }}" class="addcartbutton">অর্ডার</a>
+                                <a href="{{ route('product',$value->slug) }}" class="addcartbutton">{{ __('messages.cartButton') }}</a>
                             </div>
                             
                         </div>
@@ -186,7 +186,7 @@
 
                         <div class="pro_btn">
                           
-                        <button class="add-to-cart-button" data-id="{{ $value->id }}">অর্ডার করুন</button>
+                        <button class="add-to-cart-button" data-id="{{ $value->id }}">{{ __('messages.cartButton') }}</button>
 
                         </div>
                         @endif
